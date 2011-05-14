@@ -1,0 +1,6 @@
+README for hwyhero:
+
+api: rails app for management of data
+data:
+scripts: scripts we might want to use
+clt-to-bwi.json: google directions output for this trip
