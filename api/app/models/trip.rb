@@ -1,5 +1,9 @@
 class Trip < ActiveRecord::Base
-  has_many :steps
+  has_many :steps, :dependent => :destroy
+  
+  validates_presence_of :origin, :destination, :name
+
+  after_create :route
   
   def first_step
     steps.find_by_previous_step_id(nil)
@@ -9,19 +13,19 @@ class Trip < ActiveRecord::Base
     legs.collect{|l| l.points}.flatten
   end
   
-  def self.route(origin,destination,name)
+  def route #(origin,destination,name)
+    
     # get json from google maps api
     response = JSON.parse(
       RestClient.get "http://maps.googleapis.com/maps/api/directions/json", 
         {:accept => :json, 
          :params => {
-           :origin => origin, 
-           :destination => destination, 
+           :origin => self.origin, 
+           :destination => self.destination, 
            :sensor => false }
         }
       )
       
-    trip = Trip.create(:name => name, :origin => origin, :destination => destination)  
     route = response['routes'].first
     puts route.class
     puts route
@@ -30,7 +34,7 @@ class Trip < ActiveRecord::Base
     prev_step = nil
     steps.each do |step|
       new_step = Step.create(
-        :trip_id => trip.id,
+        :trip_id => self.id,
         :start_point_id => Point.create(
           :latitude => step['start_location']['lat'],
           :longitude => step['start_location']['lng']
@@ -38,11 +42,13 @@ class Trip < ActiveRecord::Base
         :end_point_id => Point.create(
           :latitude => step['end_location']['lat'],
           :longitude => step['end_location']['lng']
-        ).id
+        ).id,
+        :instructions => step['html_instructions'],
+        :distance => step['distance']['text']
       )
       new_step.previous_step = prev_step if prev_step
       prev_step.next_step = new_step if prev_step 
-      trip.steps << new_step
+      self.steps << new_step
     end
   end
 end
