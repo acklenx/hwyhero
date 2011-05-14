@@ -1,0 +1,12 @@
+.trip
+  .name
+    = trip.name
+  .from
+    = trip.origin
+  .to
+    = trip.destination
+  .actions
+    = link_to "view", trip_path(trip)
+    = link_to 'edit', edit_trip_path(trip)
+    = link_to "delete", trip_path(trip), :method => :delete, :confirm => true
+
