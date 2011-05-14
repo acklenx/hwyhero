@@ -76,6 +76,10 @@ GEM
     gherkin (2.3.7)
       json (>= 1.4.6)
     haml (3.1.1)
+    heroku (2.1.4)
+      launchy (>= 0.3.2)
+      rest-client (~> 1.6.1)
+      term-ansicolor (~> 1.0.5)
     highline (1.6.2)
     i18n (0.5.0)
     jquery-rails (1.0.2)
@@ -141,6 +145,7 @@ GEM
       railties (~> 3.0)
       rspec (~> 2.6.0)
     rubyzip (0.9.4)
+    sass (3.1.1)
     selenium-webdriver (0.2.0)
       childprocess (>= 0.1.7)
       ffi (>= 1.0.7)
@@ -168,6 +173,7 @@ DEPENDENCIES
   database_cleaner
   faker
   haml
+  heroku
   jquery-rails (>= 0.2.6)
   launchy
   mocha
@@ -177,3 +183,4 @@ DEPENDENCIES
   rake
   rest-client
   rspec-rails
+  sass
