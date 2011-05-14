@@ -10,7 +10,21 @@ class Trip < ActiveRecord::Base
   end
   
   def points
-    legs.collect{|l| l.points}.flatten
+    steps.collect{|l| l.points}.flatten
+  end
+  
+  attr_accessor :center_point
+  def center
+    return @center_point if @center_point
+    start = self.steps.find_by_previous_step_id(nil).start_point
+    puts "Start: #{start.inspect}"
+    finish = self.steps.find_by_next_step_id(nil).end_point
+    puts "Finish: #{finish.inspect}"
+    
+    avg_lat = (start.latitude.to_f + finish.latitude.to_f) / 2.0
+    avg_long = (start.longitude.to_f + finish.longitude.to_f) / 2.0
+    
+    @center_point = {:latitude => avg_lat, :longitude => avg_long}
   end
   
   def route #(origin,destination,name)
@@ -27,8 +41,6 @@ class Trip < ActiveRecord::Base
       )
       
     route = response['routes'].first
-    puts route.class
-    puts route
     leg = route['legs'].first
     steps = leg['steps']
     prev_step = nil
@@ -44,11 +56,13 @@ class Trip < ActiveRecord::Base
           :longitude => step['end_location']['lng']
         ).id,
         :instructions => step['html_instructions'],
-        :distance => step['distance']['text']
+        :distance => step['distance']['text'],
+        :path => step['polyline']['points']
       )
-      new_step.previous_step = prev_step if prev_step
-      prev_step.next_step = new_step if prev_step 
+      new_step.update_attribute(:previous_step_id,prev_step.id) if prev_step
+      prev_step.update_attribute(:next_step_id,new_step.id) if prev_step 
       self.steps << new_step
+      prev_step = new_step
     end
   end
 end

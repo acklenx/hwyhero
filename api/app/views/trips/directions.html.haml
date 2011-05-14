@@ -12,5 +12,6 @@
   To:
   = @trip.destination
 
-= render :partial => 'trips/actions', :locals => {:trip => @trip}
+= render @trip.steps
 
+= render :partial => 'trips/actions', :locals => {:trip => @trip}

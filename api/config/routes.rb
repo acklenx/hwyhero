@@ -1,5 +1,11 @@
 Api::Application.routes.draw do
-  resources :trips
+  resources :trips do
+    member do
+      get :mapview
+      get :points
+      get :directions
+    end
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
