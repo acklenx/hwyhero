@@ -1,0 +1,19 @@
+%p#notice= notice
+
+%h1
+  Trip:
+  = @trip.name
+
+%h2
+  From:
+  = @trip.origin
+
+%h2
+  To:
+  = @trip.destination
+
+= render @trip.steps
+
+.actions
+  = link_to 'Edit', edit_trip_path(@trip) |
+  = link_to 'Back', trips_path 

@@ -1,0 +1,21 @@
+= form_for(@trip) do |f|
+  -if @trip.errors.any?
+    %div#error_explanation
+      %h2
+        = pluralize(@trip.errors.count, "error")
+        prohibited this trip from being saved:
+
+      %ul
+        - @trip.errors.full_messages.each do |msg|
+          %li= msg
+  =f.label :name
+  =f.text_field :name
+  %br
+  =f.label :origin
+  =f.text_field :origin
+  %br
+  =f.label :destination
+  =f.text_field :destination
+  %br
+  %div.actions
+    = f.submit

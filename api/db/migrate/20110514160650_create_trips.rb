@@ -11,6 +11,7 @@ class CreateTrips < ActiveRecord::Migration
     create_table :steps do |t|
       t.integer :trip_id, :null => false
       t.string :distance
+      t.string :instructions
       t.integer :start_point_id, :null => false
       t.integer :end_point_id, :null => false
       t.integer :next_step_id, :default => nil
