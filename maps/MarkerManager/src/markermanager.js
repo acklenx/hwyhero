@@ -1,14 +1,4 @@
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
-    <title>Google Maps API Example - Random Weather Map</title>
-    <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAA-O3c-Om9OcvXMOJXreXHAxQGj0PqsCtxKvarsoS-iqLdqZSKfxS27kJqGZajBjvuzOBLizi931BUow"
-      type="text/javascript"></script>
-	  <script type="text/javascript">
-		  /**
+/**
  * @name MarkerManager
  * @version 1.0
  * @copyright (c) 2007 Google Inc.
@@ -17,13 +7,13 @@
  * @fileoverview Marker manager is an interface between the map and the user,
  * designed to manage adding and removing many points when the viewport changes.
  * <br /><br />
- * <b>How it Works</b>:<br/>
+ * <b>How it Works</b>:<br/> 
  * The MarkerManager places its markers onto a grid, similar to the map tiles.
  * When the user moves the viewport, it computes which grid cells have
  * entered or left the viewport, and shows or hides all the markers in those
  * cells.
  * (If the users scrolls the viewport beyond the markers that are loaded,
- * no markers will be visible until the <code>EVENT_moveend</code>
+ * no markers will be visible until the <code>EVENT_moveend</code> 
  * triggers an update.)
  * In practical consequences, this allows 10,000 markers to be distributed over
  * a large area, and as long as only 100-200 are visible in any given viewport,
@@ -44,7 +34,7 @@
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
- * limitations under the License.
+ * limitations under the License. 
  */
 
 /**
@@ -61,7 +51,7 @@
  *     visible.
  * @property {Boolean} [trackMarkers=false] Indicates whether or not a marker
  *     manager should track markers' movements. If you wish to move managed
- *     markers using the {@link setPoint}/{@link setLatLng} methods,
+ *     markers using the {@link setPoint}/{@link setLatLng} methods, 
  *     this option should be set to {@link true}.
  */
 
@@ -379,35 +369,35 @@ MarkerManager.prototype.getMarkerCount = function (zoom) {
   return total;
 };
 
-/**
- * Returns a marker given latitude, longitude and zoom. If the marker does not
- * exist, the method will return a new marker. If a new marker is created,
- * it will NOT be added to the manager.
- *
- * @param {Number} lat - the latitude of a marker.
- * @param {Number} lng - the longitude of a marker.
- * @param {Number} zoom - the zoom level
- * @return {GMarker} marker - the marker found at lat and lng
- */
-MarkerManager.prototype.getMarker = function(lat, lng, zoom) {
-  var me = this;
-  var mPoint = new GLatLng(lat, lng);
-  var gridPoint = me.getTilePoint_(mPoint, zoom, GSize.ZERO);
+/** 
+ * Returns a marker given latitude, longitude and zoom. If the marker does not 
+ * exist, the method will return a new marker. If a new marker is created, 
+ * it will NOT be added to the manager. 
+ * 
+ * @param {Number} lat - the latitude of a marker. 
+ * @param {Number} lng - the longitude of a marker. 
+ * @param {Number} zoom - the zoom level 
+ * @return {GMarker} marker - the marker found at lat and lng 
+ */ 
+MarkerManager.prototype.getMarker = function(lat, lng, zoom) { 
+  var me = this; 
+  var mPoint = new GLatLng(lat, lng); 
+  var gridPoint = me.getTilePoint_(mPoint, zoom, GSize.ZERO); 
 
-  var marker = new GMarker(mPoint);
-  var cellArray = me.getGridCellNoCreate_(gridPoint.x, gridPoint.y, zoom);
-  if(cellArray != undefined){
-    for (var i = 0; i < cellArray.length; i++)
-    {
-      if(lat == cellArray[i].getLatLng().lat() &&
-         lng == cellArray[i].getLatLng().lng())
-      {
-        marker = cellArray[i];
-      }
-    }
-  }
-  return marker;
-};
+  var marker = new GMarker(mPoint); 
+  var cellArray = me.getGridCellNoCreate_(gridPoint.x, gridPoint.y, zoom); 
+  if(cellArray != undefined){ 
+    for (var i = 0; i < cellArray.length; i++) 
+    { 
+      if(lat == cellArray[i].getLatLng().lat() && 
+         lng == cellArray[i].getLatLng().lng()) 
+      { 
+        marker = cellArray[i]; 
+      } 
+    } 
+  } 
+  return marker; 
+}; 
 
 /**
  * Add a single marker to the map.
@@ -823,75 +813,3 @@ MarkerManager.prototype.removeFromArray_ = function (array, value, opt_notype) {
   }
   return shift;
 };
-	  </script>
-    <script type="text/javascript">
-      document.write('<script type="text/javascript" src="../src/markermanager' + (document.location.search.indexOf('packed') > -1 ? '_packed' : '') + '.js"><' + '/script>');
-    </script>
-    <script type="text/javascript">
-    //<![CDATA[
-
-    var IMAGES = [ "sun", "rain", "snow", "storm" ];
-    var ICONS = [];
-    var map = null;
-    var mgr = null;
-
-    function setupMap() {
-      if (GBrowserIsCompatible()) {
-        map = new GMap2(document.getElementById("map"));
-        map.addControl(new GLargeMapControl());
-        map.setCenter(new GLatLng(48.25, 11.00), 4);
-        map.enableDoubleClickZoom();
-        window.setTimeout(setupWeatherMarkers, 0);
-      }
-    }
-
-    function getWeatherIcon() {
-      var i = Math.floor(IMAGES.length*Math.random());
-      if (!ICONS[i]) {
-        var icon = new GIcon();
-        icon.image = "images/"
-            + IMAGES[i] + ".png";
-        icon.iconAnchor = new GPoint(16, 16);
-        icon.infoWindowAnchor = new GPoint(16, 0);
-        icon.iconSize = new GSize(32, 32);
-        icon.shadow = "images/"
-            + IMAGES[i] + "-shadow.png";
-        icon.shadowSize = new GSize(59, 32);
-        ICONS[i] = icon;
-      }
-      return ICONS[i];
-    }
-
-    function getRandomPoint() {
-      var lat = 48.25 + (Math.random() - 0.5)*14.5;
-      var lng = 11.00 + (Math.random() - 0.5)*36.0;
-      return new GLatLng(Math.round(lat*10)/10, Math.round(lng*10)/10);
-    }
-
-    function getWeatherMarkers(n) {
-      var batch = [];
-      for (var i = 0; i < n; ++i) {
-        batch.push(new GMarker(getRandomPoint(), { icon: getWeatherIcon() }));
-      }
-      return batch;
-    }
-
-    function setupWeatherMarkers() {
-      mgr = new MarkerManager(map);
-      mgr.addMarkers(getWeatherMarkers(20), 3);
-      mgr.addMarkers(getWeatherMarkers(200), 6);
-      mgr.addMarkers(getWeatherMarkers(1000), 8);
-      mgr.refresh();
-    }
-    //]]>
-    </script>
-  </head>
-
-  <body onload="setupMap()" onunload="GUnload()">
-    <div id="map" style="margin: 5px auto; width: 650px; height: 400px"></div>
-    <div style="text-align: center; font-size: large;">
-      Random Weather Map
-    </div>
-  </body>
-</html>
- 

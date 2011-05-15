@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7544d793-3a24-446c-95c3-fa073a0ade96" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/maps/converter.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/maps/test.html" afterPath="$PROJECT_DIR$/maps/test.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/maps/drop.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/maps/google.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/maps/gasData.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/maps/weather-manager.html" />
     </list>
     <list id="35ccb393-d50a-4374-a90c-e45f60fc1ee4" name="Failed commit: Default" comment="not showing up!!" />
     <ignored path=".idea/" />
@@ -68,24 +65,6 @@
   <component name="FileColors" enabled="true" enabledForTabs="true" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="test.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/maps/test.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="41" selection-start="253" selection-end="253" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="google.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/maps/google.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="50" selection-start="269" selection-end="269" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="gasData.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/maps/gasData.xml">
           <provider selected="true" editor-type-id="text-editor">
@@ -119,19 +98,37 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="directions-simple.html" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="directions-simple.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../../Downloads/directions-simple.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="91" column="28" selection-start="2810" selection-end="2810" vertical-scroll-proportion="0.28144458">
+            <state line="73" column="0" selection-start="2381" selection-end="2381" vertical-scroll-proportion="-4.571429">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="directions-simple.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/maps/directions-simple.html">
+      <file leaf-file-name="weather-manager.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/maps/weather-manager.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="65" column="21" selection-start="2205" selection-end="2205" vertical-scroll-proportion="-24.7">
+            <state line="824" column="2" selection-start="25629" selection-end="25629" vertical-scroll-proportion="-24.583334">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="directions-simple.html" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/maps/MarkerManager/directions-simple.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="115" column="0" selection-start="3839" selection-end="3839" vertical-scroll-proportion="1.744186">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="weather_map.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/maps/MarkerManager/weather_map.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="11" column="35" selection-start="754" selection-end="754" vertical-scroll-proportion="-8.708333">
               <folding />
             </state>
           </provider>
@@ -186,7 +183,10 @@
         <option value="$PROJECT_DIR$/maps/icon-complex.html" />
         <option value="$PROJECT_DIR$/maps/drop.html" />
         <option value="$PROJECT_DIR$/maps/marker-animations.html" />
+        <option value="$PROJECT_DIR$/maps/weather-manager.html" />
+        <option value="$PROJECT_DIR$/maps/MarkerManager/weather_map.html" />
         <option value="$PROJECT_DIR$/../../Downloads/directions-simple.html" />
+        <option value="$PROJECT_DIR$/maps/MarkerManager/directions-simple.html" />
       </list>
     </option>
   </component>
@@ -256,6 +256,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="maps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hwyhero" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hwyhero" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="maps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MarkerManager" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -390,8 +408,8 @@
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
   <component name="ToolWindowManager">
-    <frame x="633" y="41" width="1104" height="1036" extended-state="0" />
-    <editor active="false" />
+    <frame x="633" y="39" width="1104" height="1036" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32969433" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18886463" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -400,7 +418,7 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.66266376" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22443181" sideWeight="0.66266376" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22443181" sideWeight="0.80349344" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32969433" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -498,13 +516,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/maps/directions-simple.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="65" column="21" selection-start="2205" selection-end="2205" vertical-scroll-proportion="-24.7">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/maps/icon-complex.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="60" column="40" selection-start="2462" selection-end="2462" vertical-scroll-proportion="-17.875">
@@ -526,9 +537,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/maps/weather-manager.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="824" column="2" selection-start="25629" selection-end="25629" vertical-scroll-proportion="-24.583334">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/maps/directions-simple.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="27" selection-start="661" selection-end="661" vertical-scroll-proportion="0.39534885">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/maps/MarkerManager/weather_map.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="35" selection-start="754" selection-end="754" vertical-scroll-proportion="-8.708333">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/../../Downloads/directions-simple.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="91" column="28" selection-start="2810" selection-end="2810" vertical-scroll-proportion="0.28144458">
+        <state line="73" column="0" selection-start="2381" selection-end="2381" vertical-scroll-proportion="-4.571429">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/maps/MarkerManager/directions-simple.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="115" column="0" selection-start="3839" selection-end="3839" vertical-scroll-proportion="1.744186">
           <folding />
         </state>
       </provider>
