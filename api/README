@@ -1,0 +1,6 @@
+== Getting started!
+
+bundle install
+rake db:migrate
+script/rails server 
+

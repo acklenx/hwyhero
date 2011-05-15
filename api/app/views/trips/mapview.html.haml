@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%h1
+  Trip:
+  = @trip.name
+
+%h2
+  From:
+  = @trip.origin
+
+%h2
+  To:
+  = @trip.destination
+
+= render :partial => 'map', :locals => {:trip => @trip}
+
+= render :partial => 'trips/actions', :locals => { :trip => @trip} 
+

@@ -1,0 +1,40 @@
+<script type="text/javascript">
+  function initialize() {
+    // get map data;
+    <%- start = trip.first_step.start_point %>
+    var latlng = new google.maps.LatLng(<%= trip.center[:latitude] %>, <%= trip.center[:longitude] %>);
+    var myOptions = {
+      zoom: 7,
+      center: latlng,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    var map = new google.maps.Map(document.getElementById("map_canvas"),
+        myOptions);
+        
+    var ctaLayer = new google.maps.KmlLayer('http://www.weather.gov/forecasts/xml/sample_products/browser_interface/ndfdXMLclient.php?gmlListLatLon=35.246741,-80.842896+36.09239,-79.792328+36.09239,-79.792328+37.542979,-77.469092+38.895112,-77.036366&featureType=Ndfd_KmlPoint&startTime=2011-05-15T12:00:00&endTime=2011-05-16T17:00:00&compType=Between&propertyName=maxt,mint,sky,wx,icons',
+      {suppressInfoWindows: true});
+    ctaLayer.setMap(map);
+    
+    var markers = [];
+    var lines = []
+    <%- counter = 0 -%>
+    <%- trip.steps.each do |s| -%>
+      markers[<%= counter -%>] = new google.maps.Marker({
+            position: new google.maps.LatLng(<%= s.start_point.latitude -%>, <%=s.start_point.longitude -%>),
+            map: map, 
+            title:"Next Turn"
+        });
+      lines[<%= counter -%>] = new google.maps.Polyline({
+          path: google.maps.geometry.encoding.decodePath('<%=s.path-%>'),
+          strokeColor: "#FF0000",
+          strokeOpacity: 1.0,
+          strokeWeight: 2
+        });
+      lines[<%= counter -%>].setMap(map);
+        
+      <%- counter += 1 -%>
+    <%- end -%>
+  
+  }
+
+</script>
