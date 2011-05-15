@@ -1,14 +1,17 @@
+/* @override http://hwyhero.com/app/lib/themes/jqt/theme.css */
+
 body {
     background: #000;
     color: #ddd;
 }
 #jqt > * {
-    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#333), to(#5e5e65));
+	/*background: #5c7a7a;*/
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#5c7a7a), color-stop(100%,#5c7b7b));
 }
 #jqt h1, #jqt h2 {
     font: bold 18px "Helvetica Neue", Helvetica;
-    text-shadow: rgba(255,255,255,.2) 0 1px 1px;
-    color: #000;
+    text-shadow: rgba(0,0,0,.2) 0 1px 1px;
+    color: #fff;
     margin: 10px 20px 5px;
 }
 /* @group Toolbar */
@@ -135,7 +138,7 @@ body {
 }
 #jqt ul {
     color: #aaa;
-    border: 1px solid #333333;
+    border: 1px solid #454545;
     font: bold 18px "Helvetica Neue", Helvetica;
     padding: 0;
     margin: 15px 10px 17px 10px;
@@ -154,17 +157,17 @@ body {
     -webkit-border-bottom-right-radius: 8px;
 }
 #jqt ul li {
-    color: #666;
+    color: #fff;
     border-top: 1px solid #333;
     border-bottom: #555858;
     list-style-type: none;
     padding: 10px 10px 10px 10px;
-    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#4c4d4e), to(#404142));
+    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#787878), to(#666666));
     overflow: hidden;
 }
 #jqt ul li.arrow {
     background-color: #4c4d4e !important;
-    background-image: url(img/chevron.png), -webkit-gradient(linear, 0% 0%, 0% 100%, from(#4c4d4e), to(#404142));
+    background-image: url(img/chevron.png), -webkit-gradient(linear, 0% 0%, 0% 100%, from(#787878), to(#666666));
     background-position: right center !important;
     background-repeat: no-repeat !important;
 }
@@ -191,7 +194,7 @@ body {
     text-shadow: rgba(0,0,0,.2) 0 1px 1px;
 }
 #jqt ul li a.active, #jqt ul li a.button {
-    background-color: #53b401;
+	background: #FF9432;
     color: #fff;
 }
 #jqt ul li a.active.loading {
@@ -255,6 +258,9 @@ body {
     display: block;
     padding: 0;
 }
+#jqt form .white{
+	color: #fff;
+}
 /*
 @end */
 /* @group Forms */
@@ -276,7 +282,7 @@ body {
 #jqt ul li input[type="url"],
 #jqt ul li textarea,
 #jqt ul li select {
-    color: #777;
+    color: #fff;
     background: transparent url('data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==');
     border: 0;
     font: normal 17px "Helvetica Neue", Helvetica;
@@ -313,6 +319,7 @@ body {
 #jqt.android ul li input[type="checkbox"]:after, #jqt.android ul li input[type="radio"]:after {
     margin: 3px 0 0 24px;
 }
+
 /* @end */
 /* @group Mini Label */
 #jqt ul li small {
@@ -385,10 +392,14 @@ body {
 #jqt .toggle {
     width: 94px;
     position: relative;
+	/*right: 50px;*/
     height: 27px;
     display: block;
     overflow: hidden;
     float: right;
+}
+#jqt .forward .toggle{
+	right: 50px;
 }
 #jqt .toggle input[type="checkbox"]:checked {
     background-position: 0 0;
@@ -571,4 +582,57 @@ input[type='submit'] {
     font-size: inherit;
     font-weight: inherit;
     padding: 10px;
+}
+
+
+/* @group Logo */
+
+#logo{
+	margin: 20px auto;
+	text-align: center;
+	/*display: block;
+	height: 150px;*/
+
+}
+
+#jqt #logo img{
+	-webkit-animation-name: intro;
+	-webkit-animation-duration: 2s;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-direction: alternate;
+	/*-webkit-animation: intro 1.5s 1 alternate;*/
+	position: relative;
+}
+
+@-webkit-keyframes intro {
+	0%{
+	right: 200%;
+}
+	10%{
+	right: 190%;
+}
+	33%{
+	right: 100%;
+}
+	85%{
+	-webkit-transform: rotate(1deg);
+}
+	90%{
+	-webkit-transform: rotate(-3deg);	
+}
+	95%{
+	right: 2%;
+}
+	100%{
+	right: 0;
+	-webkit-transform: rotate(0);
+}
+}
+/* @end */
+
+#home .toolbar h1{
+	font-family: 'Pacifico', arial, serif;
+	font-size: 21px;
+	font-weight: normal;
+    text-shadow: rgba(0,0,0,1) 0 -1px 1px;
 }
