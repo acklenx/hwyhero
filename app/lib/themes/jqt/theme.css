@@ -17,10 +17,10 @@ body {
 /* @group Toolbar */
 #jqt .toolbar {
     -webkit-box-sizing: border-box;
-    border-bottom: 1px solid #000;
+    border-bottom: 1px solid #333;
     padding: 10px;
     height: 45px;
-    background: url(img/toolbar.png) #000000 repeat-x;
+    background: url(img/toolbar-bg.jpg) #000000 repeat-x;
     position: relative;
 }
 #jqt .black-translucent .toolbar {
@@ -641,4 +641,8 @@ input[type='submit'] {
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FF9533), color-stop(100%,#FF8A2F));  webkit 
     position: relative;
     -webkit-box-shadow: 0 1px 2px #ccc inset;
+}
+
+#home .individual{
+	margin-top: 60px;
 }

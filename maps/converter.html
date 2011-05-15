@@ -1,0 +1,1466 @@
+<html>
+	<head>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.0/jquery.min.js"></script>
+		<script type="text/javascript">
+			// Changes XML to JSON
+			window.onload	= go;
+			function go()
+			{
+
+alert('going');
+				j = xmlToJson( document.getElementById( "xmlDataContainer" ) );
+				
+			}
+
+			var sUrl = "http://gasprices.mapquest.com/ajax?ST=RE&R=5&CLL=35.2269,-80.8433&GPT=2,3,4&OB=2&OBPT=3&PS=10&PS=0";
+			bodyContent = $.ajax( {
+				url: sUrl,
+				type: "POST",
+
+				success: function( msg )
+				{
+					alert( msg );
+				}
+			}
+					).responseText;
+
+
+			function xmlToJson( xml )
+			{
+
+				// Create the return object
+				var obj = {};
+
+				if ( xml.nodeType == 1 )
+				{ // element
+					// do attributes
+					if ( xml.attributes.length > 0 )
+					{
+						obj["@attributes"] = {};
+						for ( var j = 0; j < xml.attributes.length; j++ )
+						{
+							var attribute = xml.attributes.item( j );
+							obj["@attributes"][attribute.nodeName] = attribute.nodeValue;
+						}
+					}
+				} else if ( xml.nodeType == 3 )
+				{ // text
+					obj = xml.nodeValue;
+				}
+
+				// do children
+				if ( xml.hasChildNodes() )
+				{
+					for ( var i = 0; i < xml.childNodes.length; i++ )
+					{
+						var item = xml.childNodes.item( i );
+						var nodeName = item.nodeName;
+						if ( typeof(obj[nodeName]) == "undefined" )
+						{
+							obj[nodeName] = xmlToJson( item );
+						}
+						else
+						{
+							if ( typeof(obj[nodeName].length) == "undefined" )
+							{
+								var old = obj[nodeName];
+								obj[nodeName] = [];
+								obj[nodeName].push( old );
+							}
+							obj[nodeName].push( xmlToJson( item ) );
+						}
+					}
+				}
+				return obj;
+			}
+			;
+
+
+		</script>
+	</head>
+	<body>
+		<form action="http://gasprices.mapquest.com/ajax" method="get">
+			<input type="text" name="ST" value="RE"> <input type="text" name="R" value="5">
+			<input type="text" name="CLL" value="35.2269,-80.8433"> <input type="text" name="GPT" value="2,3,4">
+			<input type="text" name="OB" value="2"> <input type="text" name="OBPT" value="3">
+			<input type="text" name="PS" value="10"> <input type="text" name="PS" value="0"> <input type="submit">
+		</form>
+	</body>
+	<textarea cols="80" rows="100" id="xmlDataContainer"> 
+	<gasPriceLocation>
+		<status>0</status>
+		<errorMessage/>
+		<radius>5.0</radius>
+		<highestPrice>-1.0</highestPrice>
+		<lowestPrice>-1.0</lowestPrice>
+		<stationCollection count="44">
+			<brands count="10">
+				<brand>BP</brand>
+				<brand>CIRCLE K</brand>
+				<brand>CITGO</brand>
+				<brand>CLARK</brand>
+				<brand>EXXON</brand>
+				<brand>KANGAROO</brand>
+				<brand>MARATHON</brand>
+				<brand>PETRO EXPRESS</brand>
+				<brand>SHELL</brand>
+				<brand>SUNOCO</brand>
+			</brands>
+			<station>
+				<id>15891</id>
+				<name>BITSY BOUNTY #1</name>
+				<address>3201 BEATTIES FORD RD</address>
+				<city>CHARLOTTE</city>
+				<stateProvince>NC</stateProvince>
+				<postalCode>28216</postalCode>
+				<country>US</country>
+				<brand>BP</brand>
+				<phone>(704)399-6280</phone>
+				<website>null</website>
+				<gasLocatorURL>
+					http://gasprices.mapquest.com/station.jsp?StationId=15891
+				</gasLocatorURL>
+				<latlng>
+					<latitude>35.2775469768</latitude>
+					<longitude>-80.8556770926</longitude>
+				</latlng>
+				<distance>3.5723813817996586</distance>
+				<priceCollection count="1">
+					<gasPrice>
+						<typeid>3</typeid>
+						<type>Regular</type>
+						<price>3.899</price>
+						<lastupdatedate>May 13, 2011 12:00:00 AM EDT</lastupdatedate>
+					</gasPrice>
+				</priceCollection>
+			</station>
+			<station>
+				<id>18169</id>
+				<name>CLANTON RD FOOD SHOP</name>
+				<address>818 CLANTON RD</address>
+				<city>CHARLOTTE</city>
+				<stateProvince>NC</stateProvince>
+				<postalCode>28217</postalCode>
+				<country>US</country>
+				<brand>BP</brand>
+				<phone>(704)527-0879</phone>
+				<website>null</website>
+				<gasLocatorURL>
+					http://gasprices.mapquest.com/station.jsp?StationId=18169
+				</gasLocatorURL>
+				<latlng>
+					<latitude>35.198846355</latitude>
+					<longitude>-80.8852998886</longitude>
+				</latlng>
+				<distance>3.0658396073071974</distance>
+				<priceCollection count="1">
+					<gasPrice>
+						<typeid>3</typeid>
+						<type>Regular</type>
+						<price>3.899</price>
+						<lastupdatedate>May 14, 2011 12:00:00 AM EDT</lastupdatedate>
+					</gasPrice>
+				</priceCollection>
+			</station>
+			<station>
+				<id>18437</id>
+				<name>NORTH END CONVENIENCE</name>
+				<address>2832 N TRYON ST</address>
+				<city>CHARLOTTE</city>
+				<stateProvince>NC</stateProvince>
+				<postalCode>28206</postalCode>
+				<country>US</country>
+				<brand>BP</brand>
+				<phone>(704)332-4764</phone>
+				<website>null</website>
+				<gasLocatorURL>
+					http://gasprices.mapquest.com/station.jsp?StationId=18437
+				</gasLocatorURL>
+				<latlng>
+					<latitude>35.2500228694</latitude>
+					<longitude>-80.8142052739</longitude>
+				</latlng>
+				<distance>2.2934779757349504</distance>
+				<priceCollection count="1">
+					<gasPrice>
+						<typeid>3</typeid>
+						<type>Regular</type>
+						<price>3.819</price>
+						<lastupdatedate>May 14, 2011 12:00:00 AM EDT</lastupdatedate>
+					</gasPrice>
+				</priceCollection>
+			</station>
+			<station>
+				<id>20666</id>
+				<name>COTSWOLD BP</name>
+				<address>4475 RANDOLPH RD</address>
+				<city>CHARLOTTE</city>
+				<stateProvince>NC</stateProvince>
+				<postalCode>28211</postalCode>
+				<country>US</country>
+				<brand>BP</brand>
+				<phone>(704)366-2431</phone>
+				<website>null</website>
+				<gasLocatorURL>
+					http://gasprices.mapquest.com/station.jsp?StationId=20666
+				</gasLocatorURL>
+				<latlng>
+					<latitude>35.17658</latitude>
+					<longitude>-80.79886</longitude>
+				</latlng>
+				<distance>4.292362220342226</distance>
+				<priceCollection count="2">
+					<gasPrice>
+						<typeid>3</typeid>
+						<type>Regular</type>
+						<price>3.959</price>
+						<lastupdatedate>May 14, 2011 12:00:00 AM EDT</lastupdatedate>
+					</gasPrice>
+					<gasPrice>
+						<typeid>4</typeid>
+						<type>Mid-grade</type>
+						<price>4.129</price>
+						<lastupdatedate>May 13, 2011 12:00:00 AM EDT</lastupdatedate>
+					</gasPrice>
+				</priceCollection>
+			</station>
+			<station>
+				<id>40181</id>
+				<name>NISBET OIL CO</name>
+				<address>1500 EASTWAY DR</address>
+				<city>CHARLOTTE</city>
+				<stateProvince>NC</stateProvince>
+				<postalCode>28205</postalCode>
+				<country>US</country>
+				<brand>SHELL</brand>
+				<phone>(704)568-8049</phone>
+				<website>null</website>
+				<gasLocatorURL>
+					http://gasprices.mapquest.com/station.jsp?StationId=40181
+				</gasLocatorURL>
+				<latlng>
+					<latitude>35.2367189519</latitude>
+					<longitude>-80.7755863101</longitude>
+				</latlng>
+				<distance>3.885680350924899</distance>
+				<priceCollection count="1">
+					<gasPrice>
+						<typeid>3</typeid>
+						<type>Regular</type>
+						<price>3.899</price>
+						<lastupdatedate>May 12, 2011 12:00:00 AM EDT</lastupdatedate>
+					</gasPrice>
+				</priceCollection>
+			</station>
+			<station>
+				<id>105128</id>
+				<name>PETRO EXPRESS</name>
+				<address>4336 PARK RD</address>
+				<city>CHARLOTTE</city>
+				<stateProvince>NC</stateProvince>
+				<postalCode>28209</postalCode>
+				<country>US</country>
+				<brand>PETRO EXPRESS</brand>
+				<phone>(704)523-0051</phone>
+				<website>null</website>
+				<gasLocatorURL>
+					http://gasprices.mapquest.com/station.jsp?StationId=105128
+				</gasLocatorURL>
+				<latlng>
+					<latitude>35.1723612815</latitude>
+					<longitude>-80.8514463901</longitude>
+				</latlng>
+				<distance>3.800493485826141</distance>
+				<priceCollection count="2">
+					<gasPrice>
+						<typeid>3</typeid>
+						<type>Regular</type>
+						<price>3.909</price>
+						<lastupdatedate>May 14, 2011 12:00:00 AM EDT</lastupdatedate>
+					</gasPrice>
+					<gasPrice>
+						<typeid>4</typeid>
+						<type>Mid-grade</type>
+						<price>4.059</price>
+						<lastupdatedate>May 10, 2011 12:00:00 AM EDT</lastupdatedate>
+					</gasPrice>
+				</priceCollection>
+			</station>
+			<station>
+				<id>105129</id>
+				<name>PETRO EXPRESS</name>
+				<address>4900 N TRYON ST</address>
+				<city>CHARLOTTE</city>
+				<stateProvince>NC</stateProvince>
+				<postalCode>28213</postalCode>
+				<country>US</country>
+				<brand>PETRO EXPRESS</brand>
+				<phone>(704)597-0156</phone>
+				<website>null</website>
+				<gasLocatorURL>
+					http://gasprices.mapquest.com/station.jsp?StationId=105129
+				</gasLocatorURL>
+				<latlng>
+					<latitude>35.2580627115</latitude>
+					<longitude>-80.784229425</longitude>
+				</latlng>
+				<distance>3.9727234858981477</distance>
+				<priceCollection count="2">
+					<gasPrice>
+						<typeid>3</typeid>
+						<type>Regular</type>
+						<price>3.789</price>
+						<lastupdatedate>May 14, 2011 12:00:00 AM EDT</lastupdatedate>
+					</gasPrice>
+					<gasPrice>
+						<typeid>4</typeid>
+						<type>Mid-grade</type>
+						<price>3.949</price>
+						<lastupdatedate>May 12, 2011 12:00:00 AM EDT</lastupdatedate>
+					</gasPrice>
+				</priceCollection>
+			</station>
+			<station>
+				<id>105130</id>
+				<name>PETRO EXPRESS</name>
+				<address>3800 WILKINSON BLVD</address>
+				<city>CHARLOTTE</city>
+				<stateProvince>NC</stateProvince>
+				<postalCode>28208</postalCode>
+				<country>US</country>
+				<brand>PETRO EXPRESS</brand>
+				<phone>(704)395-8819</phone>
+				<website>null</website>
+				<gasLocatorURL>
+					http://gasprices.mapquest.com/station.jsp?StationId=105130
+				</gasLocatorURL>
+				<latlng>
+					<latitude>35.2250679182</latitude>
+					<longitude>-80.9044409242</longitude>
+				</latlng>
+				<distance>3.457068279660294</distance>
+				<priceCollection count="1">
+					<gasPrice>
+						<typeid>3</typeid>
+						<type>Regular</type>
+						<price>3.869</price>
+						<lastupdatedate>May 13, 2011 12:00:00 AM EDT</lastupdatedate>
+					</gasPrice>
+				</priceCollection>
+			</station>
+			<station>
+				<id>105134</id>
+				<name>PETRO EXPRESS</name>
+				<address>2200 S TRYON ST</address>
+				<city>CHARLOTTE</city>
+				<stateProvince>NC</stateProvince>
+				<postalCode>28203</postalCode>
+				<country>US</country>
+				<brand>PETRO EXPRESS</brand>
+				<phone>(704)332-4421</phone>
+				<website>null</website>
+				<gasLocatorURL>
+					http://gasprices.mapquest.com/station.jsp?StationId=105134
+				</gasLocatorURL>
+				<latlng>
+					<latitude>35.2096529808</latitude>
+					<longitude>-80.8668521149</longitude>
+				</latlng>
+				<distance>1.7873462502599564</distance>
+				<priceCollection count="1">
+					<gasPrice>
+						<typeid>3</typeid>
+						<type>Regular</type>
+						<price>3.899</price>
+						<lastupdatedate>May 14, 2011 12:00:00 AM EDT</lastupdatedate>
+					</gasPrice>
+				</priceCollection>
+			</station>
+			<station>
+				<id>105135</id>
+				<name>PETRO EXPRESS</name>
+				<address>2701 N GRAHAM ST</address>
+				<city>CHARLOTTE</city>
+				<stateProvince>NC</stateProvince>
+				<postalCode>28206</postalCode>
+				<country>US</country>
+				<brand>PETRO EXPRESS</brand>
+				<phone>(704)334-4542</phone>
+				<website>null</website>
+				<gasLocatorURL>
+					http://gasprices.mapquest.com/station.jsp?StationId=105135
+				</gasLocatorURL>
+				<latlng>
+					<latitude>35.2549276222</latitude>
+					<longitude>-80.8242630021</longitude>
+				</latlng>
+				<distance>2.2170268287969064</distance>
+				<priceCollection count="1">
+					<gasPrice>
+						<typeid>3</typeid>
+						<type>Regular</type>
+						<price>3.789</price>
+						<lastupdatedate>May 13, 2011 12:00:00 AM EDT</lastupdatedate>
+					</gasPrice>
+				</priceCollection>
+			</station>
+			<station>
+				<id>122106</id>
+				<name>EXXON</name>
+				<address>4401 PARK RD</address>
+				<city>CHARLOTTE</city>
+				<stateProvince>NC</stateProvince>
+				<postalCode>28209</postalCode>
+				<country>US</country>
+				<brand>EXXON</brand>
+				<phone>(704)522-1842</phone>
+				<website>null</website>
+				<gasLocatorURL>
+					http://gasprices.mapquest.com/station.jsp?StationId=122106
+				</gasLocatorURL>
+				<latlng>
+					<latitude>35.1719959774</latitude>
+					<longitude>-80.8511161418</longitude>
+				</latlng>
+				<distance>3.823375259143044</distance>
+				<priceCollection count="1">
+					<gasPrice>
+						<typeid>3</typeid>
+						<type>Regular</type>
+						<price>3.899</price>
+						<lastupdatedate>May 10, 2011 12:00:00 AM EDT</lastupdatedate>
+					</gasPrice>
+				</priceCollection>
+			</station>
+			<station>
+				<id>126548</id>
+				<name>EXXON</name>
+				<address>5124 CENTRAL AVE</address>
+				<city>CHARLOTTE</city>
+				<stateProvince>NC</stateProvince>
+				<postalCode>28205</postalCode>
+				<country>US</country>
+				<brand>EXXON</brand>
+				<phone>(704)535-3133</phone>
+				<website>null</website>
+				<gasLocatorURL>
+					http://gasprices.mapquest.com/station.jsp?StationId=126548
+				</gasLocatorURL>
+				<latlng>
+					<latitude>35.2101470493</latitude>
+					<longitude>-80.7577820309</longitude>
+				</latlng>
+				<distance>4.969600183000102</distance>
+				<priceCollection count="1">
+					<gasPrice>
+						<typeid>3</typeid>
+						<type>Regular</type>
+						<price>3.899</price>
+						<lastupdatedate>May 9, 2011 12:00:00 AM EDT</lastupdatedate>
+					</gasPrice>
+				</priceCollection>
+			</station>
+			<station>
+				<id>128139</id>
+				<name>FREDS KWIK SHOP</name>
+				<address>4000 N GRAHAM ST</address>
+				<city>CHARLOTTE</city>
+				<stateProvince>NC</stateProvince>
+				<postalCode>28206</postalCode>
+				<country>US</country>
+				<brand>MARATHON</brand>
+				<phone>(704)597-8670</phone>
+				<website>null</website>
+				<gasLocatorURL>
+					http://gasprices.mapquest.com/station.jsp?StationId=128139
+				</gasLocatorURL>
+				<latlng>
+					<latitude>35.2702976443</latitude>
+					<longitude>-80.8137996786</longitude>
+				</latlng>
+				<distance>3.4333903475252763</distance>
+				<priceCollection count="1">
+					<gasPrice>
+						<typeid>3</typeid>
+						<type>Regular</type>
+						<price>3.859</price>
+						<lastupdatedate>May 12, 2011 12:00:00 AM EDT</lastupdatedate>
+					</gasPrice>
+				</priceCollection>
+			</station>
+			<station>
+				<id>128393</id>
+				<name>PETRO EXPRESS</name>
+				<address>4923 S TRYON ST</address>
+				<city>CHARLOTTE</city>
+				<stateProvince>NC</stateProvince>
+				<postalCode>28217</postalCode>
+				<country>US</country>
+				<brand>PETRO EXPRESS</brand>
+				<phone>(704)494-4110</phone>
+				<website>null</website>
+				<gasLocatorURL>
+					http://gasprices.mapquest.com/station.jsp?StationId=128393
+				</gasLocatorURL>
+				<latlng>
+					<latitude>35.1784458172</latitude>
+					<longitude>-80.89146547</longitude>
+				</latlng>
+				<distance>4.317937456603302</distance>
+				<priceCollection count="2">
+					<gasPrice>
+						<typeid>3</typeid>
+						<type>Regular</type>
+						<price>3.899</price>
+						<lastupdatedate>May 14, 2011 12:00:00 AM EDT</lastupdatedate>
+					</gasPrice>
+					<gasPrice>
+						<typeid>4</typeid>
+						<type>Mid-grade</type>
+						<price>4.059</price>
+						<lastupdatedate>May 13, 2011 12:00:00 AM EDT</lastupdatedate>
+					</gasPrice>
+				</priceCollection>
+			</station>
+			<station>
+				<id>137307</id>
+				<name>QUALITY SERVICE CENTER</name>
+				<address>4116 STATESVILLE RD</address>
+				<city>CHARLOTTE</city>
+				<stateProvince>NC</stateProvince>
+				<postalCode>28269</postalCode>
+				<country>US</country>
+				<brand>CITGO</brand>
+				<phone>(704)599-1991</phone>
+				<website>null</website>
+				<gasLocatorURL>
+					http://gasprices.mapquest.com/station.jsp?StationId=137307
+				</gasLocatorURL>
+				<latlng>
+					<latitude>35.2749149391</latitude>
+					<longitude>-80.8356929695</longitude>
+				</latlng>
+				<distance>3.3489220444392718</distance>
+				<priceCollection count="2">
+					<gasPrice>
+						<typeid>3</typeid>
+						<type>Regular</type>
+						<price>3.819</price>
+						<lastupdatedate>May 14, 2011 12:00:00 AM EDT</lastupdatedate>
+					</gasPrice>
+					<gasPrice>
+						<typeid>4</typeid>
+						<type>Mid-grade</type>
+						<price>3.979</price>
+						<lastupdatedate>May 14, 2011 12:00:00 AM EDT</lastupdatedate>
+					</gasPrice>
+				</priceCollection>
+			</station>
+			<station>
+				<id>140479</id>
+				<name>SAMS MART</name>
+				<address>3800 CENTRAL AVE</address>
+				<city>CHARLOTTE</city>
+				<stateProvince>NC</stateProvince>
+				<postalCode>28205</postalCode>
+				<country>US</country>
+				<brand>SHELL</brand>
+				<phone>(704)568-7170</phone>
+				<website>null</website>
+				<gasLocatorURL>
+					http://gasprices.mapquest.com/station.jsp?StationId=140479
+				</gasLocatorURL>
+				<latlng>
+					<latitude>35.21556</latitude>
+					<longitude>-80.78013</longitude>
+				</latlng>
+				<distance>3.6547734096453857</distance>
+				<priceCollection count="1">
+					<gasPrice>
+						<typeid>3</typeid>
+						<type>Regular</type>
+						<price>3.909</price>
+						<lastupdatedate>May 12, 2011 12:00:00 AM EDT</lastupdatedate>
+					</gasPrice>
+				</priceCollection>
+			</station>
+			<station>
+				<id>186707</id>
+				<name>HARI EXPRESS</name>
+				<address>4200 BROOKSHIRE BLVD</address>
+				<city>CHARLOTTE</city>
+				<stateProvince>NC</stateProvince>
+				<postalCode>28216</postalCode>
+				<country>US</country>
+				<brand></brand>
+				<phone>(704)293-3702</phone>
+				<website>null</website>
+				<gasLocatorURL>
+					http://gasprices.mapquest.com/station.jsp?StationId=186707
+				</gasLocatorURL>
+				<latlng>
+					<latitude>35.2666056051</latitude>
+					<longitude>-80.8819748826</longitude>
+				</latlng>
+				<distance>3.5094529722698407</distance>
+				<priceCollection count="1">
+					<gasPrice>
+						<typeid>3</typeid>
+						<type>Regular</type>
+						<price>3.789</price>
+						<lastupdatedate>May 14, 2011 12:00:00 AM EDT</lastupdatedate>
+					</gasPrice>
+				</priceCollection>
+			</station>
+			<station>
+				<id>199344</id>
+				<name>CATON S</name>
+				<address>5416 STATESVILLE RD</address>
+				<city>CHARLOTTE</city>
+				<stateProvince>NC</stateProvince>
+				<postalCode>28269</postalCode>
+				<country>US</country>
+				<brand>SUNOCO</brand>
+				<phone>(704)597-0684</phone>
+				<website>null</website>
+				<gasLocatorURL>
+					http://gasprices.mapquest.com/station.jsp?StationId=199344
+				</gasLocatorURL>
+				<latlng>
+					<latitude>35.2932673384</latitude>
+					<longitude>-80.8384351028</longitude>
+				</latlng>
+				<distance>4.598909446529852</distance>
+				<priceCollection count="1">
+					<gasPrice>
+						<typeid>3</typeid>
+						<type>Regular</type>
+						<price>3.849</price>
+						<lastupdatedate>May 11, 2011 12:00:00 AM EDT</lastupdatedate>
+					</gasPrice>
+				</priceCollection>
+			</station>
+			<station>
+				<id>210244</id>
+				<name>SAMS MART #75</name>
+				<address>2519 BEATTIES FORD RD</address>
+				<city>CHARLOTTE</city>
+				<stateProvince>NC</stateProvince>
+				<postalCode>28216</postalCode>
+				<country>US</country>
+				<brand>SHELL</brand>
+				<phone>(704)394-3010</phone>
+				<website>null</website>
+				<gasLocatorURL>
+					http://gasprices.mapquest.com/station.jsp?StationId=210244
+				</gasLocatorURL>
+				<latlng>
+					<latitude>35.26887</latitude>
+					<longitude>-80.85406</longitude>
+				</latlng>
+				<distance>2.9660538767169173</distance>
+				<priceCollection count="1">
+					<gasPrice>
+						<typeid>3</typeid>
+						<type>Regular</type>
+						<price>3.829</price>
+						<lastupdatedate>May 12, 2011 12:00:00 AM EDT</lastupdatedate>
+					</gasPrice>
+				</priceCollection>
+			</station>
+			<station>
+				<id>253044</id>
+				<name>PETRO EXPRESS</name>
+				<address>4718 N GRAHAM ST</address>
+				<city>CHARLOTTE</city>
+				<stateProvince>NC</stateProvince>
+				<postalCode>28269</postalCode>
+				<country>US</country>
+				<brand>PETRO EXPRESS</brand>
+				<phone>(704)509-0001</phone>
+				<website>null</website>
+				<gasLocatorURL>
+					http://gasprices.mapquest.com/station.jsp?StationId=253044
+				</gasLocatorURL>
+				<latlng>
+					<latitude>35.2782656219</latitude>
+					<longitude>-80.8074314856</longitude>
+				</latlng>
+				<distance>4.09009164541076</distance>
+				<priceCollection count="1">
+					<gasPrice>
+						<typeid>3</typeid>
+						<type>Regular</type>
+						<price>3.789</price>
+						<lastupdatedate>May 13, 2011 12:00:00 AM EDT</lastupdatedate>
+					</gasPrice>
+				</priceCollection>
+			</station>
+			<station>
+				<id>258531</id>
+				<name>BRINSON DIESEL SALES</name>
+				<address>2700 N TRYON ST</address>
+				<city>CHARLOTTE</city>
+				<stateProvince>NC</stateProvince>
+				<postalCode>28206</postalCode>
+				<country>US</country>
+				<brand>SHELL</brand>
+				<phone>(704)333-5096</phone>
+				<website>null</website>
+				<gasLocatorURL>
+					http://gasprices.mapquest.com/station.jsp?StationId=258531
+				</gasLocatorURL>
+				<latlng>
+					<latitude>35.2488101558</latitude>
+					<longitude>-80.8157732822</longitude>
+				</latlng>
+				<distance>2.17149772344955</distance>
+				<priceCollection count="2">
+					<gasPrice>
+						<typeid>3</typeid>
+						<type>Regular</type>
+						<price>3.869</price>
+						<lastupdatedate>May 12, 2011 12:00:00 AM EDT</lastupdatedate>
+					</gasPrice>
+					<gasPrice>
+						<typeid>4</typeid>
+						<type>Mid-grade</type>
+						<price>4.029</price>
+						<lastupdatedate>May 7, 2011 12:00:00 AM EDT</lastupdatedate>
+					</gasPrice>
+				</priceCollection>
+			</station>
+			<station>
+				<id>269726</id>
+				<name>WEST BLVD BP</name>
+				<address>1601 REMOUNT RD</address>
+				<city>CHARLOTTE</city>
+				<stateProvince>NC</stateProvince>
+				<postalCode>28208</postalCode>
+				<country>US</country>
+				<brand>BP</brand>
+				<phone>(704)847-5977</phone>
+				<website>null</website>
+				<gasLocatorURL>
+					http://gasprices.mapquest.com/station.jsp?StationId=269726
+				</gasLocatorURL>
+				<latlng>
+					<latitude>35.2162645157</latitude>
+					<longitude>-80.8836991641</longitude>
+				</latlng>
+				<distance>2.39847254206276</distance>
+				<priceCollection count="2">
+					<gasPrice>
+						<typeid>3</typeid>
+						<type>Regular</type>
+						<price>3.899</price>
+						<lastupdatedate>May 13, 2011 12:00:00 AM EDT</lastupdatedate>
+					</gasPrice>
+					<gasPrice>
+						<typeid>4</typeid>
+						<type>Mid-grade</type>
+						<price>3.979</price>
+						<lastupdatedate>May 9, 2011 12:00:00 AM EDT</lastupdatedate>
+					</gasPrice>
+				</priceCollection>
+			</station>
+			<station>
+				<id>285397</id>
+				<name>QUICK N EZ FOOD MART</name>
+				<address>1419 W TRADE ST</address>
+				<city>CHARLOTTE</city>
+				<stateProvince>NC</stateProvince>
+				<postalCode>28216</postalCode>
+				<country>US</country>
+				<brand>KANGAROO</brand>
+				<phone>(704)333-1370</phone>
+				<website>null</website>
+				<gasLocatorURL>
+					http://gasprices.mapquest.com/station.jsp?StationId=285397
+				</gasLocatorURL>
+				<latlng>
+					<latitude>35.2366740366</latitude>
+					<longitude>-80.8583643779</longitude>
+				</latlng>
+				<distance>1.0869836143676461</distance>
+				<priceCollection count="1">
+					<gasPrice>
+						<typeid>3</typeid>
+						<type>Regular</type>
+						<price>3.899</price>
+						<lastupdatedate>May 13, 2011 12:00:00 AM EDT</lastupdatedate>
+					</gasPrice>
+				</priceCollection>
+			</station>
+			<station>
+				<id>293906</id>
+				<name>SAM'S MART #55</name>
+				<address>5455 BROOKSHIRE BLVD</address>
+				<city>CHARLOTTE</city>
+				<stateProvince>NC</stateProvince>
+				<postalCode>28216</postalCode>
+				<country>US</country>
+				<brand>SHELL</brand>
+				<phone>(704)399-5200</phone>
+				<website>null</website>
+				<gasLocatorURL>
+					http://gasprices.mapquest.com/station.jsp?StationId=293906
+				</gasLocatorURL>
+				<latlng>
+					<latitude>35.278418334</latitude>
+					<longitude>-80.8941832145</longitude>
+				</latlng>
+				<distance>4.578212528954783</distance>
+				<priceCollection count="1">
+					<gasPrice>
+						<typeid>3</typeid>
+						<type>Regular</type>
+						<price>3.819</price>
+						<lastupdatedate>May 12, 2011 12:00:00 AM EDT</lastupdatedate>
+					</gasPrice>
+				</priceCollection>
+			</station>
+			<station>
+				<id>296062</id>
+				<name>WOODLAWN BP</name>
+				<address>100 E WOODLAWN RD</address>
+				<city>CHARLOTTE</city>
+				<stateProvince>NC</stateProvince>
+				<postalCode>28217</postalCode>
+				<country>US</country>
+				<brand>BP</brand>
+				<phone>(704)525-0291</phone>
+				<website>null</website>
+				<gasLocatorURL>
+					http://gasprices.mapquest.com/station.jsp?StationId=296062
+				</gasLocatorURL>
+				<latlng>
+					<latitude>35.1790027671</latitude>
+					<longitude>-80.8834536703</longitude>
+				</latlng>
+				<distance>4.015881436238073</distance>
+				<priceCollection count="2">
+					<gasPrice>
+						<typeid>3</typeid>
+						<type>Regular</type>
+						<price>3.849</price>
+						<lastupdatedate>May 14, 2011 12:00:00 AM EDT</lastupdatedate>
+					</gasPrice>
+					<gasPrice>
+						<typeid>4</typeid>
+						<type>Mid-grade</type>
+						<price>4.089</price>
+						<lastupdatedate>May 11, 2011 12:00:00 AM EDT</lastupdatedate>
+					</gasPrice>
+				</priceCollection>
+			</station>
+			<station>
+				<id>296069</id>
+				<name>SAMS MART #77</name>
+				<address>3305 SCOTT FUTRELL DR</address>
+				<city>CHARLOTTE</city>
+				<stateProvince>NC</stateProvince>
+				<postalCode>28208</postalCode>
+				<country>US</country>
+				<brand>SHELL</brand>
+				<phone>(704)394-1939</phone>
+				<website>null</website>
+				<gasLocatorURL>
+					http://gasprices.mapquest.com/station.jsp?StationId=296069
+				</gasLocatorURL>
+				<latlng>
+					<latitude>35.23711</latitude>
+					<longitude>-80.92088</longitude>
+				</latlng>
+				<distance>4.439832813871856</distance>
+				<priceCollection count="2">
+					<gasPrice>
+						<typeid>3</typeid>
+						<type>Regular</type>
+						<price>3.899</price>
+						<lastupdatedate>May 12, 2011 12:00:00 AM EDT</lastupdatedate>
+					</gasPrice>
+					<gasPrice>
+						<typeid>4</typeid>
+						<type>Mid-grade</type>
+						<price>4.069</price>
+						<lastupdatedate>May 11, 2011 12:00:00 AM EDT</lastupdatedate>
+					</gasPrice>
+				</priceCollection>
+			</station>
+			<station>
+				<id>297086</id>
+				<name>CIRCLE K #5107</name>
+				<address>1300 W SUGAR CREEK RD</address>
+				<city>CHARLOTTE</city>
+				<stateProvince>NC</stateProvince>
+				<postalCode>28262</postalCode>
+				<country>US</country>
+				<brand>CIRCLE K</brand>
+				<phone>(704)597-8295</phone>
+				<website>null</website>
+				<gasLocatorURL>
+					http://gasprices.mapquest.com/station.jsp?StationId=297086
+				</gasLocatorURL>
+				<latlng>
+					<latitude>35.2800336448</latitude>
+					<longitude>-80.7933551073</longitude>
+				</latlng>
+				<distance>4.63323033299959</distance>
+				<priceCollection count="1">
+					<gasPrice>
+						<typeid>3</typeid>
+						<type>Regular</type>
+						<price>3.799</price>
+						<lastupdatedate>May 12, 2011 12:00:00 AM EDT</lastupdatedate>
+					</gasPrice>
+				</priceCollection>
+			</station>
+			<station>
+				<id>301524</id>
+				<name>EASTWAY PETRO MART</name>
+				<address>601 EASTWAY DR</address>
+				<city>CHARLOTTE</city>
+				<stateProvince>NC</stateProvince>
+				<postalCode>28205</postalCode>
+				<country>US</country>
+				<brand>CITGO</brand>
+				<phone>(704)597-7712</phone>
+				<website>null</website>
+				<gasLocatorURL>
+					http://gasprices.mapquest.com/station.jsp?StationId=301524
+				</gasLocatorURL>
+				<latlng>
+					<latitude>35.2494299872</latitude>
+					<longitude>-80.7810281119</longitude>
+				</latlng>
+				<distance>3.8478374147538306</distance>
+				<priceCollection count="2">
+					<gasPrice>
+						<typeid>3</typeid>
+						<type>Regular</type>
+						<price>3.819</price>
+						<lastupdatedate>May 13, 2011 12:00:00 AM EDT</lastupdatedate>
+					</gasPrice>
+					<gasPrice>
+						<typeid>4</typeid>
+						<type>Mid-grade</type>
+						<price>4.029</price>
+						<lastupdatedate>May 9, 2011 12:00:00 AM EDT</lastupdatedate>
+					</gasPrice>
+				</priceCollection>
+			</station>
+			<station>
+				<id>302651</id>
+				<name>CIRCLE K #5111</name>
+				<address>2833 FREEDOM DR</address>
+				<city>CHARLOTTE</city>
+				<stateProvince>NC</stateProvince>
+				<postalCode>28208</postalCode>
+				<country>US</country>
+				<brand>CIRCLE K</brand>
+				<phone>(704)394-2837</phone>
+				<website>null</website>
+				<gasLocatorURL>
+					http://gasprices.mapquest.com/station.jsp?StationId=302651
+				</gasLocatorURL>
+				<latlng>
+					<latitude>35.2395037017</latitude>
+					<longitude>-80.885265646</longitude>
+				</latlng>
+				<distance>2.5262409669142682</distance>
+				<priceCollection count="2">
+					<gasPrice>
+						<typeid>3</typeid>
+						<type>Regular</type>
+						<price>3.849</price>
+						<lastupdatedate>May 12, 2011 12:00:00 AM EDT</lastupdatedate>
+					</gasPrice>
+					<gasPrice>
+						<typeid>4</typeid>
+						<type>Mid-grade</type>
+						<price>4.009</price>
+						<lastupdatedate>May 12, 2011 12:00:00 AM EDT</lastupdatedate>
+					</gasPrice>
+				</priceCollection>
+			</station>
+			<station>
+				<id>305047</id>
+				<name>ASHLEY RD BP</name>
+				<address>1400 ASHLEY RD</address>
+				<city>CHARLOTTE</city>
+				<stateProvince>NC</stateProvince>
+				<postalCode>28208</postalCode>
+				<country>US</country>
+				<brand>BP</brand>
+				<phone>(704)392-0797</phone>
+				<website>null</website>
+				<gasLocatorURL>
+					http://gasprices.mapquest.com/station.jsp?StationId=305047
+				</gasLocatorURL>
+				<latlng>
+					<latitude>35.2436089618</latitude>
+					<longitude>-80.8968049588</longitude>
+				</latlng>
+				<distance>3.2363457824878714</distance>
+				<priceCollection count="2">
+					<gasPrice>
+						<typeid>3</typeid>
+						<type>Regular</type>
+						<price>3.939</price>
+						<lastupdatedate>May 14, 2011 12:00:00 AM EDT</lastupdatedate>
+					</gasPrice>
+					<gasPrice>
+						<typeid>4</typeid>
+						<type>Mid-grade</type>
+						<price>4.099</price>
+						<lastupdatedate>May 12, 2011 12:00:00 AM EDT</lastupdatedate>
+					</gasPrice>
+				</priceCollection>
+			</station>
+			<station>
+				<id>308881</id>
+				<name>EGF #1</name>
+				<address>4405 THE PLAZA</address>
+				<city>CHARLOTTE</city>
+				<stateProvince>NC</stateProvince>
+				<postalCode>28215</postalCode>
+				<country>US</country>
+				<brand>CLARK</brand>
+				<phone>(704)568-8962</phone>
+				<website>null</website>
+				<gasLocatorURL>
+					http://gasprices.mapquest.com/station.jsp?StationId=308881
+				</gasLocatorURL>
+				<latlng>
+					<latitude>35.2496635468</latitude>
+					<longitude>-80.7807085047</longitude>
+				</latlng>
+				<distance>3.870892468013615</distance>
+				<priceCollection count="1">
+					<gasPrice>
+						<typeid>3</typeid>
+						<type>Regular</type>
+						<price>3.819</price>
+						<lastupdatedate>May 13, 2011 12:00:00 AM EDT</lastupdatedate>
+					</gasPrice>
+				</priceCollection>
+			</station>
+			<station>
+				<id>308894</id>
+				<name>NISBET OIL CO</name>
+				<address>923 S KINGS DR</address>
+				<city>CHARLOTTE</city>
+				<stateProvince>NC</stateProvince>
+				<postalCode>28204</postalCode>
+				<country>US</country>
+				<brand>SHELL</brand>
+				<phone>(704)332-7262</phone>
+				<website>null</website>
+				<gasLocatorURL>
+					http://gasprices.mapquest.com/station.jsp?StationId=308894
+				</gasLocatorURL>
+				<latlng>
+					<latitude>35.2062034843</latitude>
+					<longitude>-80.8360888477</longitude>
+				</latlng>
+				<distance>1.4884684839652862</distance>
+				<priceCollection count="2">
+					<gasPrice>
+						<typeid>3</typeid>
+						<type>Regular</type>
+						<price>3.919</price>
+						<lastupdatedate>May 12, 2011 12:00:00 AM EDT</lastupdatedate>
+					</gasPrice>
+					<gasPrice>
+						<typeid>4</typeid>
+						<type>Mid-grade</type>
+						<price>4.059</price>
+						<lastupdatedate>May 10, 2011 12:00:00 AM EDT</lastupdatedate>
+					</gasPrice>
+				</priceCollection>
+			</station>
+			<station>
+				<id>311503</id>
+				<name>PETRO EXPRESS</name>
+				<address>4500 RANDOLPH RD</address>
+				<city>CHARLOTTE</city>
+				<stateProvince>NC</stateProvince>
+				<postalCode>28211</postalCode>
+				<country>US</country>
+				<brand>PETRO EXPRESS</brand>
+				<phone>(704)365-2723</phone>
+				<website>null</website>
+				<gasLocatorURL>
+					http://gasprices.mapquest.com/station.jsp?StationId=311503
+				</gasLocatorURL>
+				<latlng>
+					<latitude>35.1755140339</latitude>
+					<longitude>-80.7982367277</longitude>
+				</latlng>
+				<distance>4.372802188170313</distance>
+				<priceCollection count="2">
+					<gasPrice>
+						<typeid>3</typeid>
+						<type>Regular</type>
+						<price>3.909</price>
+						<lastupdatedate>May 14, 2011 12:00:00 AM EDT</lastupdatedate>
+					</gasPrice>
+					<gasPrice>
+						<typeid>4</typeid>
+						<type>Mid-grade</type>
+						<price>4.149</price>
+						<lastupdatedate>May 11, 2011 12:00:00 AM EDT</lastupdatedate>
+					</gasPrice>
+				</priceCollection>
+			</station>
+			<station>
+				<id>312412</id>
+				<name>PETRO EXPRESS</name>
+				<address>605 CLANTON RD</address>
+				<city>CHARLOTTE</city>
+				<stateProvince>NC</stateProvince>
+				<postalCode>28217</postalCode>
+				<country>US</country>
+				<brand>PETRO EXPRESS</brand>
+				<phone>(704)523-0486</phone>
+				<website>null</website>
+				<gasLocatorURL>
+					http://gasprices.mapquest.com/station.jsp?StationId=312412
+				</gasLocatorURL>
+				<latlng>
+					<latitude>35.1972563527</latitude>
+					<longitude>-80.8809874688</longitude>
+				</latlng>
+				<distance>2.9564947729053617</distance>
+				<priceCollection count="2">
+					<gasPrice>
+						<typeid>3</typeid>
+						<type>Regular</type>
+						<price>3.899</price>
+						<lastupdatedate>May 14, 2011 12:00:00 AM EDT</lastupdatedate>
+					</gasPrice>
+					<gasPrice>
+						<typeid>4</typeid>
+						<type>Mid-grade</type>
+						<price>4.059</price>
+						<lastupdatedate>May 14, 2011 12:00:00 AM EDT</lastupdatedate>
+					</gasPrice>
+				</priceCollection>
+			</station>
+			<station>
+				<id>324150</id>
+				<name>CIRCLE K #5109</name>
+				<address>4474 RANDOLPH RD</address>
+				<city>CHARLOTTE</city>
+				<stateProvince>NC</stateProvince>
+				<postalCode>28211</postalCode>
+				<country>US</country>
+				<brand>CIRCLE K</brand>
+				<phone>(704)442-1090</phone>
+				<website>null</website>
+				<gasLocatorURL>
+					http://gasprices.mapquest.com/station.jsp?StationId=324150
+				</gasLocatorURL>
+				<latlng>
+					<latitude>35.1765234415</latitude>
+					<longitude>-80.7987865997</longitude>
+				</latlng>
+				<distance>4.29796302539436</distance>
+				<priceCollection count="2">
+					<gasPrice>
+						<typeid>3</typeid>
+						<type>Regular</type>
+						<price>3.989</price>
+						<lastupdatedate>May 12, 2011 12:00:00 AM EDT</lastupdatedate>
+					</gasPrice>
+					<gasPrice>
+						<typeid>4</typeid>
+						<type>Mid-grade</type>
+						<price>4.119</price>
+						<lastupdatedate>May 9, 2011 12:00:00 AM EDT</lastupdatedate>
+					</gasPrice>
+				</priceCollection>
+			</station>
+			<station>
+				<id>331718</id>
+				<name>SAM S MART STORE #48</name>
+				<address>2840 EASTWAY DR</address>
+				<city>CHARLOTTE</city>
+				<stateProvince>NC</stateProvince>
+				<postalCode>28205</postalCode>
+				<country>US</country>
+				<brand>SUNOCO</brand>
+				<phone>(704)568-8826</phone>
+				<website>null</website>
+				<gasLocatorURL>
+					http://gasprices.mapquest.com/station.jsp?StationId=331718
+				</gasLocatorURL>
+				<latlng>
+					<latitude>35.2179443486</latitude>
+					<longitude>-80.7806153593</longitude>
+				</latlng>
+				<distance>3.5958880084666216</distance>
+				<priceCollection count="2">
+					<gasPrice>
+						<typeid>4</typeid>
+						<type>Mid-grade</type>
+						<price>3.899</price>
+						<lastupdatedate>May 14, 2011 12:00:00 AM EDT</lastupdatedate>
+					</gasPrice>
+					<gasPrice>
+						<typeid>3</typeid>
+						<type>Regular</type>
+						<price>4.059</price>
+						<lastupdatedate>May 12, 2011 12:00:00 AM EDT</lastupdatedate>
+					</gasPrice>
+				</priceCollection>
+			</station>
+			<station>
+				<id>331731</id>
+				<name>SAM S MART # 61</name>
+				<address>3814 BROOKSHIRE BLVD</address>
+				<city>CHARLOTTE</city>
+				<stateProvince>NC</stateProvince>
+				<postalCode>28216</postalCode>
+				<country>US</country>
+				<brand>SUNOCO</brand>
+				<phone>(704)399-7928</phone>
+				<website>null</website>
+				<gasLocatorURL>
+					http://gasprices.mapquest.com/station.jsp?StationId=331731
+				</gasLocatorURL>
+				<latlng>
+					<latitude>35.2631740748</latitude>
+					<longitude>-80.8798496877</longitude>
+				</latlng>
+				<distance>3.2494314733149685</distance>
+				<priceCollection count="2">
+					<gasPrice>
+						<typeid>3</typeid>
+						<type>Regular</type>
+						<price>3.799</price>
+						<lastupdatedate>May 14, 2011 12:00:00 AM EDT</lastupdatedate>
+					</gasPrice>
+					<gasPrice>
+						<typeid>4</typeid>
+						<type>Mid-grade</type>
+						<price>4.099</price>
+						<lastupdatedate>May 10, 2011 12:00:00 AM EDT</lastupdatedate>
+					</gasPrice>
+				</priceCollection>
+			</station>
+			<station>
+				<id>338315</id>
+				<name>CIRCLE K #4747</name>
+				<address>2926 SELWYN AVE</address>
+				<city>CHARLOTTE</city>
+				<stateProvince>NC</stateProvince>
+				<postalCode>28209</postalCode>
+				<country>US</country>
+				<brand>CIRCLE K</brand>
+				<phone>(704)375-7511</phone>
+				<website>null</website>
+				<gasLocatorURL>
+					http://gasprices.mapquest.com/station.jsp?StationId=338315
+				</gasLocatorURL>
+				<latlng>
+					<latitude>35.173073945</latitude>
+					<longitude>-80.8404384881</longitude>
+				</latlng>
+				<distance>3.7267122136111546</distance>
+				<priceCollection count="2">
+					<gasPrice>
+						<typeid>3</typeid>
+						<type>Regular</type>
+						<price>3.919</price>
+						<lastupdatedate>May 12, 2011 12:00:00 AM EDT</lastupdatedate>
+					</gasPrice>
+					<gasPrice>
+						<typeid>4</typeid>
+						<type>Mid-grade</type>
+						<price>4.079</price>
+						<lastupdatedate>May 12, 2011 12:00:00 AM EDT</lastupdatedate>
+					</gasPrice>
+				</priceCollection>
+			</station>
+			<station>
+				<id>338319</id>
+				<name>MORNINGSIDE CITGO</name>
+				<address>1126 MORNINGSIDE DR</address>
+				<city>CHARLOTTE</city>
+				<stateProvince>NC</stateProvince>
+				<postalCode>28205</postalCode>
+				<country>US</country>
+				<brand>CITGO</brand>
+				<phone>(704)374-1228</phone>
+				<website>null</website>
+				<gasLocatorURL>
+					http://gasprices.mapquest.com/station.jsp?StationId=338319
+				</gasLocatorURL>
+				<latlng>
+					<latitude>35.2123209507</latitude>
+					<longitude>-80.8015401933</longitude>
+				</latlng>
+				<distance>2.566253378806478</distance>
+				<priceCollection count="1">
+					<gasPrice>
+						<typeid>3</typeid>
+						<type>Regular</type>
+						<price>3.869</price>
+						<lastupdatedate>May 13, 2011 12:00:00 AM EDT</lastupdatedate>
+					</gasPrice>
+				</priceCollection>
+			</station>
+			<station>
+				<id>338463</id>
+				<name>CIRCLE K #4743</name>
+				<address>4001 SOUTH BLVD</address>
+				<city>CHARLOTTE</city>
+				<stateProvince>NC</stateProvince>
+				<postalCode>28209</postalCode>
+				<country>US</country>
+				<brand>CIRCLE K</brand>
+				<phone>(704)527-5944</phone>
+				<website>null</website>
+				<gasLocatorURL>
+					http://gasprices.mapquest.com/station.jsp?StationId=338463
+				</gasLocatorURL>
+				<latlng>
+					<latitude>35.1888571881</latitude>
+					<longitude>-80.8756182497</longitude>
+				</latlng>
+				<distance>3.2032504904789856</distance>
+				<priceCollection count="1">
+					<gasPrice>
+						<typeid>3</typeid>
+						<type>Regular</type>
+						<price>3.899</price>
+						<lastupdatedate>May 13, 2011 12:00:00 AM EDT</lastupdatedate>
+					</gasPrice>
+				</priceCollection>
+			</station>
+			<station>
+				<id>408285</id>
+				<name>BROOKSHIRE BP</name>
+				<address>3521 BROOKSHIRE BLVD</address>
+				<city>CHARLOTTE</city>
+				<stateProvince>NC</stateProvince>
+				<postalCode>28216</postalCode>
+				<country>US</country>
+				<brand>BP</brand>
+				<phone>(704)399-8780</phone>
+				<website>null</website>
+				<gasLocatorURL>
+					http://gasprices.mapquest.com/station.jsp?StationId=408285
+				</gasLocatorURL>
+				<latlng>
+					<latitude>35.2606318677</latitude>
+					<longitude>-80.8761361325</longitude>
+				</latlng>
+				<distance>2.9807895190103975</distance>
+				<priceCollection count="1">
+					<gasPrice>
+						<typeid>3</typeid>
+						<type>Regular</type>
+						<price>3.819</price>
+						<lastupdatedate>May 14, 2011 12:00:00 AM EDT</lastupdatedate>
+					</gasPrice>
+				</priceCollection>
+			</station>
+			<station>
+				<id>408719</id>
+				<name>WOODLAWN BP</name>
+				<address>4646 SOUTH BLVD</address>
+				<city>CHARLOTTE</city>
+				<stateProvince>NC</stateProvince>
+				<postalCode>28209</postalCode>
+				<country>US</country>
+				<brand>BP</brand>
+				<phone>(704)527-6765</phone>
+				<website>null</website>
+				<gasLocatorURL>
+					http://gasprices.mapquest.com/station.jsp?StationId=408719
+				</gasLocatorURL>
+				<latlng>
+					<latitude>35.1776463245</latitude>
+					<longitude>-80.8759102823</longitude>
+				</latlng>
+				<distance>3.873552840931225</distance>
+				<priceCollection count="1">
+					<gasPrice>
+						<typeid>3</typeid>
+						<type>Regular</type>
+						<price>3.799</price>
+						<lastupdatedate>May 14, 2011 12:00:00 AM EDT</lastupdatedate>
+					</gasPrice>
+				</priceCollection>
+			</station>
+			<station>
+				<id>409431</id>
+				<name>CIRCLE K #1884</name>
+				<address>701 N GRAHAM ST</address>
+				<city>CHARLOTTE</city>
+				<stateProvince>NC</stateProvince>
+				<postalCode>28202</postalCode>
+				<country>US</country>
+				<brand>CIRCLE K</brand>
+				<phone>(704)333-6104</phone>
+				<website>null</website>
+				<gasLocatorURL>
+					http://gasprices.mapquest.com/station.jsp?StationId=409431
+				</gasLocatorURL>
+				<latlng>
+					<latitude>35.23558</latitude>
+					<longitude>-80.84006</longitude>
+				</latlng>
+				<distance>0.6276919260995194</distance>
+				<priceCollection count="1">
+					<gasPrice>
+						<typeid>3</typeid>
+						<type>Regular</type>
+						<price>3.859</price>
+						<lastupdatedate>May 12, 2011 12:00:00 AM EDT</lastupdatedate>
+					</gasPrice>
+				</priceCollection>
+			</station>
+			<station>
+				<id>409454</id>
+				<name>PLAZA RD BP</name>
+				<address>3920 THE PLAZA</address>
+				<city>CHARLOTTE</city>
+				<stateProvince>NC</stateProvince>
+				<postalCode>28205</postalCode>
+				<country>US</country>
+				<brand>BP</brand>
+				<phone>(704)375-3400</phone>
+				<website>null</website>
+				<gasLocatorURL>
+					http://gasprices.mapquest.com/station.jsp?StationId=409454
+				</gasLocatorURL>
+				<latlng>
+					<latitude>35.246212</latitude>
+					<longitude>-80.788227</longitude>
+				</latlng>
+				<distance>3.3861052489851327</distance>
+				<priceCollection count="2">
+					<gasPrice>
+						<typeid>3</typeid>
+						<type>Regular</type>
+						<price>3.859</price>
+						<lastupdatedate>May 14, 2011 12:00:00 AM EDT</lastupdatedate>
+					</gasPrice>
+					<gasPrice>
+						<typeid>4</typeid>
+						<type>Mid-grade</type>
+						<price>4.089</price>
+						<lastupdatedate>May 12, 2011 12:00:00 AM EDT</lastupdatedate>
+					</gasPrice>
+				</priceCollection>
+			</station>
+		</stationCollection>
+	</gasPriceLocation>
+	</textarea>
+	<script>
+	</script>
+</html>

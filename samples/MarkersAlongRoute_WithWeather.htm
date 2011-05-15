@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+   <title>Google Maps - Moving point along a path</title>
+   <script src="http://maps.google.com/maps?file=api&v=2&sensor=false"
+           type="text/javascript"></script>
+</head>
+<body onunload="GUnload()">
+   <div id="map_canvas" style="width: 1080px; height: 500px;"></div>
+
+   <script type="text/javascript">
+
+
+
+   Number.prototype.toRad = function() {
+      return this * Math.PI / 180;
+   }
+
+   Number.prototype.toDeg = function() {
+      return this * 180 / Math.PI;
+   }
+
+   GLatLng.prototype.moveTowards = function(point, distance) {
+      var lat1 = this.lat().toRad();
+      var lon1 = this.lng().toRad();
+      var lat2 = point.lat().toRad();
+      var lon2 = point.lng().toRad();
+      var dLon = (point.lng() - this.lng()).toRad();
+
+      // Find the bearing from this point to the next.
+      var brng = Math.atan2(Math.sin(dLon) * Math.cos(lat2),
+                            Math.cos(lat1) * Math.sin(lat2) -
+                            Math.sin(lat1) * Math.cos(lat2) *
+                            Math.cos(dLon));
+
+      var angDist = distance / 6371000;  // Earth's radius.
+
+      // Calculate the destination point, given the source and bearing.
+      lat2 = Math.asin(Math.sin(lat1) * Math.cos(angDist) +
+                       Math.cos(lat1) * Math.sin(angDist) *
+                       Math.cos(brng));
+
+      lon2 = lon1 + Math.atan2(Math.sin(brng) * Math.sin(angDist) *
+                               Math.cos(lat1),
+                               Math.cos(angDist) - Math.sin(lat1) *
+                               Math.sin(lat2));
+
+      if (isNaN(lat2) || isNaN(lon2)) return null;
+
+      return new GLatLng(lat2.toDeg(), lon2.toDeg());
+   }
+
+   function moveAlongPath(points, distance, index) {
+      index = index || 0;  // Set index to 0 by default.
+
+      if (index < points.length) {
+         // There is still at least one point further from this point.
+
+         // Construct a GPolyline to use the getLength() method.
+         var polyline = new GPolyline([points[index], points[index + 1]]);
+
+         // Get the distance from this point to the next point in the polyline.
+         var distanceToNextPoint = polyline.getLength();
+
+         if (distance <= distanceToNextPoint) {
+            // distanceToNextPoint is within this point and the next.
+            // Return the destination point with moveTowards().
+            return points[index].moveTowards(points[index + 1], distance);
+         }
+         else {
+            // The destination is further from the next point. Subtract
+            // distanceToNextPoint from distance and continue recursively.
+            return moveAlongPath(points,
+                                 distance - distanceToNextPoint,
+                                 index + 1);
+         }
+      }
+      else {
+         // There are no further points. The distance exceeds the length
+         // of the full path. Return null.
+         return null;
+      }
+   }
+
+   var map = new GMap2(document.getElementById('map_canvas'));
+
+	/**
+   var points = [
+      new GLatLng(47.656, -122.360),
+      new GLatLng(47.656, -122.343),
+      new GLatLng(47.690, -122.310),
+      new GLatLng(47.690, -122.270)
+   ];
+	*/
+	var points = [
+	new GLatLng(35.246741,-80.842896),
+	new GLatLng(36.09239,-79.792328),
+	new GLatLng(36.09239,-79.792328),
+	new GLatLng(37.542979,-77.469092),
+	new GLatLng(38.895112,-77.036366),
+	new GLatLng(39.290385,-76.612189)
+	];
+
+   var polyline = new GPolyline(points, '#f00', 6);
+
+   var nextMarkerAt = 0;     // Counter for the marker checkpoints.
+   var nextPoint = null;     // The point where to place the next marker.
+
+   map.setCenter(new GLatLng(35.246741,-80.842896), 6);
+
+   // Draw the path on the map.
+   map.addOverlay(polyline);
+
+   var weatherURL = "http://www.weather.gov/forecasts/xml/sample_products/browser_interface/ndfdXMLclient.php?gmlListLatLon=";
+
+
+   // Draw the checkpoint markers every 1000 meters.
+   while (true) {
+      // Call moveAlongPath which will return the GLatLng with the next
+      // marker on the path.
+      nextPoint = moveAlongPath(points, nextMarkerAt);
+
+      if (nextPoint) {
+         // Draw the marker on the map.
+         map.addOverlay(new GMarker(nextPoint));
+
+		//alert(nextPoint.lat() + " " + nextPoint.lng());
+		weatherURL += nextPoint.lat() + "," + nextPoint.lng() + "+";
+
+         // Add +1000 meters for the next checkpoint.
+         //nextMarkerAt += 75000;
+         nextMarkerAt += 150000;
+      }
+      else {
+         // moveAlongPath returned null, so there are no more check points.
+         break;
+      }
+   }
+
+    //35.246741,-80.842896+36.09239,-79.792328+36.09239,-79.792328+37.542979,-77.469092+38.895112,-77.036366&featureType=Ndfd_KmlPoint&startTime=2011-05-15T12:00:00&endTime=2011-05-16T17:00:00&compType=Between&propertyName=maxt,mint,sky,wx,icons"
+   weatherURL += "&featureType=Ndfd_KmlPoint&startTime=2011-05-15T12:00:00&endTime=2011-05-16T17:00:00&compType=Between&propertyName=maxt,mint,sky,wx,icons";
+   var geoXml = new GGeoXml(weatherURL);
+   map.addOverlay(geoXml);
+
+   </script>
+</body>
+</html>
