@@ -1,0 +1,259 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+<!--
+        <script src="http://jsconsole.com/remote.js?"></script>
+        <script src="http://192.168.1.2:8080/target/target-script-min.js"></script>
+-->
+        <title>Hwy Hero</title>
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+		<meta name="viewport" content="width=device-width" />
+		
+        <style type="text/css" media="screen">@import "lib/jqtouch/jqtouch.css";</style>
+        <style type="text/css" media="screen">@import "lib/themes/jqt/theme.css";</style>
+
+        <script src="lib/jqtouch/jquery-1.4.2.js" type="text/javascript" charset="utf-8"></script>
+        <script src="lib/jqtouch/jqtouch.js" type="application/x-javascript" charset="utf-8"></script>
+
+		<script src="lib/Google-Maps-v3-for-jQTouch/javascripts/map.init.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+		<script src="map.js" type="text/javascript" charset="utf-8"></script>		
+		<!-- <script src="http://maps.google.com/maps?file=api&v=3&sensor=false&key=ABQIAAAADxprL_-jsTEHie_GJ4KjLRSqiVVIFYD-ltFipz3hPkq7YzAwGhTZ-EWb-nRDkG1yslR8CBu3fwI-3w" type="text/javascript"></script> -->
+		<!-- <script src="http://www.google.com/uds/api?file=uds.js&amp;v=1.0&amp;key=BQIAAAADxprL_-jsTEHie_GJ4KjLRSqiVVIFYD-ltFipz3hPkq7YzAwGhTZ-EWb-nRDkG1yslR8CBu3fwI-3w" type="text/javascript"></script> -->
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/jquery-ui.min.js"></script>
+		<script src="lib/jquery-ui-touch-punch/jquery.ui.touch-punch.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/ui-lightness/jquery-ui.css" type="text/css" media="all" />
+		<link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="lib/TouchScroll/src/touchscroll.css" type="text/css" media="screen" title="no title" charset="utf-8">		<script src="lib/extensions/jqt.scroll.js" type="text/javascript" charset="utf-8"></script>
+		<script src="lib/css-bezier.js" type="text/javascript" charset="utf-8"></script>
+		
+        <script type="text/javascript" charset="utf-8">
+ 				var viewCallack,
+						scroller,
+						geo
+						
+				navigator.geolocation.getCurrentPosition(function(position) {
+					//latitude = position.coords.latitude;
+          //longitude = position.coords.longitude;
+					geo = position;
+					console.log(geo)
+				});
+			   			
+        var jQT = new $.jQTouch({
+           icon: 'iphone_icon.png',
+           icon4: 'iphone4_icon.png',
+           addGlossToIcon: false,
+           startupScreen: 'loading.png',
+           statusBar: 'black',
+           preloadImages: [
+               'lib/themes/jqt/img/activeButton.png',
+               'lib/themes/jqt/img/back_button.png',
+               'lib/themes/jqt/img/back_button_clicked.png',
+               'lib/themes/jqt/img/blueButton.png',
+               'lib/themes/jqt/img/button.png',
+               'lib/themes/jqt/img/button_clicked.png',
+               'lib/themes/jqt/img/grayButton.png',
+               'lib/themes/jqt/img/greenButton.png',
+               'lib/themes/jqt/img/redButton.png',
+               'lib/themes/jqt/img/whiteButton.png',
+               'lib/themes/jqt/img/loading.gif',
+				'images/logo.png'
+               ]
+       });
+
+			$(function() {
+
+				$('#route').bind("tap",function(){
+					map_initialize();
+				});
+
+        // Orientation callback event
+        $('#jqt').bind('turn', function(e, data){
+            $('#orient').html('Orientation: ' + data.orientation);
+        });
+
+				$(".settings").live("tap",function() {
+					var self = this;
+					$("#settings-child").load("view." + $(this).attr("view") + ".html",function(msg) {
+						jQT.goTo("#settings-child","slideleft");
+						if($(this).is(".script")) {
+							$.getScript("script." + $(self).attr("view") + ".js",function() {
+								if(typeof viewCallback == "function") { viewCallback(); } 
+							});
+						}
+					});
+				});
+				
+				$(".doSearch").tap(function() {
+					jQT.goTo("#search","slideleft");
+										
+					geocoder = new google.maps.Geocoder();
+				  var latlng = new google.maps.LatLng(geo.coords.latitude, geo.coords.longitude);
+					geocoder.geocode( { 'address': $("#searchTerm").val()}, function(results, status) {
+						if (status == google.maps.GeocoderStatus.OK) {
+							//console.log(results)
+					  	var html = "";
+							for(var result in results) {
+								var name = results[result].formatted_address
+								name = name.length>25? name.substr(0,25) + "...": name;
+								html+='<li><a class="ellipsis">' + name + '</a><small class="counter">2.1</small></li>';
+							}
+							$("#search .plastic").html(html)
+						} else {
+						// no results
+						}
+				  });
+				  
+				  $("#searchTerm").live("keyup",function(e) {
+                      if(e.keyCode==13) {
+                          $(".doSearch").trigger("tap")
+                      }
+                  });
+					
+					scroller = new TouchScroll($(".scroll")[0],{
+						elastic:true
+					})
+				});
+			});
+        </script>
+        <style type="text/css" media="screen">
+            #jqt.fullscreen #home .info {
+                display: none;
+            }
+            div#jqt #about {
+                padding: 100px 10px 40px;
+                text-shadow: rgba(255, 255, 255, 0.3) 0px -1px 0;
+                font-size: 13px;
+                text-align: center;
+                background: #161618;
+            }
+            div#jqt #about p {
+                margin-bottom: 8px;
+            }
+            div#jqt #about a {
+                color: #fff;
+                font-weight: bold;
+                text-decoration: none;
+            }
+			.scroll {
+				height:415px;
+				overflow:hidden;
+			}
+			#jqt ul.plastic li a{
+				padding:10px 10px 2px 10px;
+			}
+			#jqt ul.plastic li .counter {
+				position:relative;
+				top:4px;
+			}
+			/*
+			ui.plastic li {
+				width:320px;
+				overflow:hidden;
+			}
+			
+			#jqt ul.plastic li .ellipsis {
+				color:#fff;
+				font-weight:normal;
+				overflow:hidden;
+				height:20px;
+				width:80%;
+				white-space:no-wrap;
+				text-overflow:ellipsis;
+				line-height:30px;
+			}
+			.plastic .counter {
+				margin:0 20px 0 0;
+			}
+			*/
+        </style>
+    </head>
+    <body>
+        <div id="jqt">
+	        <div id="home" class="current">
+                <div class="toolbar">
+                    <h1>Hwy Hero</h1>
+                    <a class="button slideup" id="infoButton" href="#about">About</a>
+                </div>
+				<div id="logo"><img src="images/logo.png" <!-- style="margin: 10px 0 -20px 80px" --></div>
+				<h2>Plan A Trip</h2>
+				<ul class="edit rounded">
+                	<li><input type="search" name="name" placeholder="eg. 'Washington Monument'" id="searchTerm" /></li>
+				</ul>
+				<!-- <ul class="individual">
+                    <li class="arrow" style="width:100%"><a href="javascript:;" class="doSearch">Search</a></li>
+                </ul> -->
+				<ul class="individual">
+					<li><a href="#history"><img src="images/history.png" alt="Trip History" /></a></li>
+					<li><a href="#settings"><img src="images/settings.png" alt="Settings" /></a></li>
+				</ul>
+            </div>
+            <div id="about" class="selectable">
+	            <p></p>
+	            <p><strong>Road Trip 5000</strong><br />Version 0.1 beta<br /></p>
+	            <p><em>Create powerful mobile apps with<br /> just HTML, CSS, and jQuery.</em></p>
+	            <p><br /><br /><a href="#" class="grayButton goback">Close</a></p>
+            </div>
+			<div id="search">
+				<div class="toolbar">
+          <h1>Search</h1>
+					<a class="back" href="#">Back</a>
+        </div>
+				<div class="scroll">
+					<ul class="plastic">
+					</ul>
+				</div>
+			</div>
+			<div id="newTrip">
+				<div class="toolbar">
+                    <h1>New Trip</h1>
+					<a class="back" href="#">Trips</a>
+                </div>
+				<form>
+					<h2>Start</h2>
+                    <ul class="edit rounded">
+                        <li><input type="search" name="name" placeholder="Start" id="some_name" /></li>
+					</ul>
+					<h2>Destination</h2>
+					<ul class="edit rounded">
+                        <li><input type="search" name="search" placeholder="Destination" id="some_name" /></li>
+                    </ul>
+					<ul class="individual">
+                    	<li><a href="#map" id="route">Start</a></li>
+                    	<li><a href="javascript:;" class="reset">Reset</a></li>
+                	</ul>
+				</form>
+			</div>
+			<div id="map">
+				<div class="toolbar">
+                    <h1>Your Trip</h1>
+					<a class="back" href="#">Details</a>
+					<a class="button" href="#settings">Settings</a>
+                </div>
+				<div id="map-overflow" style="overflow: hidden; padding: 0; border: 0;" class="notransform">
+					<div id="map_canvas" style="margin-left: -20px; margin-top: -20px;" class="notransform"></div>
+				</div>
+			</div>
+			<div id="settings">
+				<div class="toolbar">
+				       <h1>Settings</h1>
+					<a class="back" href="#">Back</a>
+					<a class="button" href="settings" view="default"></a>
+				</div>
+				<h2>Information</h2>
+				<ul class="rounded">
+				       <li class="forward"><a href="javascript:;" class="settings" view="settings-weather"><span class="toggle"><input type="checkbox" /></span> Weather</a></li>
+				       <li class="forward"><a href="javascript:;" class="settings" view="settings-fuel"><span class="toggle"><input type="checkbox" /></span> Fuel</a></li>
+				       <li class="forward"><a href="javascript:;" class="settings script" view="settings-food"><span class="toggle"><input type="checkbox" /></span> Food</a></li>
+				   </ul>
+				<h2>Options</h2>
+			</div>
+			<div id="settings-child">
+			</div>
+        </div>
+    </body>
+</html>
