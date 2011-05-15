@@ -23,7 +23,6 @@ var aIntervals = [];
                 map: theMap,
                 title: title
             });
-
             return this;
         }
 
@@ -125,10 +124,17 @@ var aIntervals = [];
 	</head>
 	<body onload="initialize()">
 		<div>
-			<b>Start: </b> <select id="start" onchange="calcRoute();">
-			<option value="Charlotte, NC">Charlotte</option>
+			<b>Start: </b>
+				<select id="start" onchange="calcRoute();">
+					<option value="Charlotte, NC">Charlotte</option>
+				</select>
+			<b>Start: </b>
+				<select id="start" onchange="calcRoute();">
+					<option value="Charlotte, NC">Charlotte</option>
+				</select>
+					
 
-		</select> <b>End: </b> <select id="end" onchange="calcRoute();">
+			<b>End: </b> <select id="end" onchange="calcRoute();">
 			<option value="Baltimore, MD"></option>
 			<option value="Baltimore, MD">Baltimore</option>
 			<option value="st louis, mo">St Louis</option>
