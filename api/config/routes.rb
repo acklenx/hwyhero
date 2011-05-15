@@ -4,6 +4,7 @@ Api::Application.routes.draw do
       get :mapview
       get :points
       get :directions
+      get :steps
     end
   end
 

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+<title>Google Maps JavaScript API v3 Example: Marker Animations</title>
+<link href="http://code.google.com/apis/maps/documentation/javascript/examples/default.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript">
+  var stockholm = new google.maps.LatLng(59.32522, 18.07002);
+  var parliament = new google.maps.LatLng(59.327383, 18.06747);
+  var marker2;
+  var marker;
+  var map;
+
+  function initialize() {
+    var mapOptions = {
+      zoom: 13,
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+      center: stockholm
+    };
+	  var myLatlng2 = new google.maps.LatLng(-59.327383,18.07002);
+	  map = new google.maps.Map(document.getElementById("map_canvas"),
+            mapOptions);
+
+
+		marker = new google.maps.Marker({
+      position: myLatlng2,
+      map: map,
+      title:"Hello World!"
+    });
+
+    marker = new google.maps.Marker({
+      map:map,
+      draggable:true,
+      animation: google.maps.Animation.DROP,
+      position: parliament
+    });
+
+    google.maps.event.addListener(marker2, 'click', toggleBounce);
+    google.maps.event.addListener(marker, 'click', toggleBounce);
+  }
+
+  function toggleBounce() {
+
+    if (marker.getAnimation() != null) {
+      marker.setAnimation(null);
+    } else {
+      marker.setAnimation(google.maps.Animation.BOUNCE);
+    }
+  }
+
+
+	function drop() {
+  for (var i =0; i < markerArray.length; i++) {
+    setTimeout(function() {
+      addMarkerMethod();
+    }, i * 200);
+  }
+}
+</script>
+</head>
+<body onload="initialize()">
+<div id="map_canvas" style="width: 500px; height: 400px;">map div</div>
+</body>
+</html>
