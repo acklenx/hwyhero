@@ -2,10 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7544d793-3a24-446c-95c3-fa073a0ade96" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/maps/MarkerManager/alongRoute.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/maps/MarkerManager/icon-complex.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/maps/weather-manager.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/maps/weather-manager.html" afterPath="$PROJECT_DIR$/maps/weather-manager.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/maps/MarkerManager/images/beachflag_shadow.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/maps/manyicons.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/maps/MarkerManager/manyicons.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/maps/MarkerManager/images/storm-shadow.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/maps/images/beachflag_shadow.png" />
     </list>
     <list id="35ccb393-d50a-4374-a90c-e45f60fc1ee4" name="Failed commit: Default" comment="not showing up!!" />
+    <list id="c2af30be-6299-4be1-97d4-c9565d3c6f65" name="Failed commit: Default (2)" comment="random weather" />
     <ignored path=".idea/" />
     <ignored path="hwyhero.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -65,43 +73,10 @@
   <component name="FileColors" enabled="true" enabledForTabs="true" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="gasData.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/maps/gasData.xml">
+      <file leaf-file-name="icon-complex.html" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/maps/MarkerManager/icon-complex.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="26" selection-start="0" selection-end="39047" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="converter.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/maps/converter.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="0" selection-start="319" selection-end="319" vertical-scroll-proportion="0.0">
-              <folding>
-                <marker date="1305422731000" expanded="true" signature="232:328" placeholder="{...}" />
-                <marker date="1305422731000" expanded="true" signature="471:571" placeholder="{...}" />
-                <marker date="1305422731000" expanded="true" signature="540:566" placeholder="{...}" />
-                <marker date="1305422731000" expanded="true" signature="627:1690" placeholder="{...}" />
-                <marker date="1305422731000" expanded="true" signature="714:1027" placeholder="{...}" />
-                <marker date="1305422731000" expanded="true" signature="716:748" placeholder="//..." />
-                <marker date="1305422731000" expanded="true" signature="792:1021" placeholder="{...}" />
-                <marker date="1305422731000" expanded="true" signature="887:1014" placeholder="{...}" />
-                <marker date="1305422731000" expanded="true" signature="1062:1103" placeholder="{...}" />
-                <marker date="1305422731000" expanded="true" signature="1159:1669" placeholder="{...}" />
-                <marker date="1305422731000" expanded="true" signature="1221:1663" placeholder="{...}" />
-                <marker date="1305422731000" expanded="true" signature="1358:1409" placeholder="{...}" />
-                <marker date="1305422731000" expanded="true" signature="1427:1656" placeholder="{...}" />
-                <marker date="1305422731000" expanded="true" signature="1494:1600" placeholder="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="directions-simple.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../../Downloads/directions-simple.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="73" column="0" selection-start="2381" selection-end="2381" vertical-scroll-proportion="-4.571429">
+            <state line="24" column="9" selection-start="956" selection-end="956" vertical-scroll-proportion="0.6541916">
               <folding />
             </state>
           </provider>
@@ -110,52 +85,16 @@
       <file leaf-file-name="weather-manager.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/maps/weather-manager.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="824" column="2" selection-start="25629" selection-end="25629" vertical-scroll-proportion="-24.583334">
+            <state line="846" column="0" selection-start="26357" selection-end="26357" vertical-scroll-proportion="-6.18">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="directions-simple.html" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/maps/MarkerManager/directions-simple.html">
+      <file leaf-file-name="alongRoute.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/maps/MarkerManager/alongRoute.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="115" column="0" selection-start="3839" selection-end="3839" vertical-scroll-proportion="1.744186">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="weather_map.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/maps/MarkerManager/weather_map.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="35" selection-start="754" selection-end="754" vertical-scroll-proportion="-8.708333">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="icon-complex.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/maps/icon-complex.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="60" column="40" selection-start="2462" selection-end="2462" vertical-scroll-proportion="-17.875">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="drop.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/maps/drop.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="66" selection-start="343" selection-end="343" vertical-scroll-proportion="-9.5">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="marker-animations.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/maps/marker-animations.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="68" selection-start="98" selection-end="98" vertical-scroll-proportion="-1.14">
+            <state line="84" column="0" selection-start="3036" selection-end="3036" vertical-scroll-proportion="-16.625">
               <folding />
             </state>
           </provider>
@@ -180,13 +119,15 @@
         <option value="$PROJECT_DIR$/maps/gasData.xml" />
         <option value="$PROJECT_DIR$/maps/converter.html" />
         <option value="$PROJECT_DIR$/maps/directions-simple.html" />
-        <option value="$PROJECT_DIR$/maps/icon-complex.html" />
         <option value="$PROJECT_DIR$/maps/drop.html" />
         <option value="$PROJECT_DIR$/maps/marker-animations.html" />
-        <option value="$PROJECT_DIR$/maps/weather-manager.html" />
         <option value="$PROJECT_DIR$/maps/MarkerManager/weather_map.html" />
         <option value="$PROJECT_DIR$/../../Downloads/directions-simple.html" />
         <option value="$PROJECT_DIR$/maps/MarkerManager/directions-simple.html" />
+        <option value="$PROJECT_DIR$/maps/manyicons.html" />
+        <option value="$PROJECT_DIR$/maps/icon-complex.html" />
+        <option value="$PROJECT_DIR$/maps/weather-manager.html" />
+        <option value="$PROJECT_DIR$/maps/MarkerManager/icon-complex.html" />
       </list>
     </option>
   </component>
@@ -273,7 +214,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="MarkerManager" />
+              <option name="myItemId" value="images" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -408,17 +349,17 @@
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
   <component name="ToolWindowManager">
-    <frame x="633" y="39" width="1104" height="1036" extended-state="0" />
-    <editor active="true" />
+    <frame x="896" y="27" width="1104" height="1036" extended-state="0" />
+    <editor active="false" />
     <layout>
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32969433" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18886463" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18886463" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.66266376" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22443181" sideWeight="0.80349344" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2471591" sideWeight="0.80349344" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32969433" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -443,7 +384,7 @@
     <option name="ENABLE_BACKGROUND_PROCESSES" value="false" />
     <option name="CHANGED_ON_SERVER_INTERVAL" value="60" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="markers still don't appear" />
+    <option name="LAST_COMMIT_MESSAGE" value="random weather" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -459,6 +400,7 @@
     <MESSAGE value="first commit" />
     <MESSAGE value="not showing up!!" />
     <MESSAGE value="markers still don't appear" />
+    <MESSAGE value="random weather" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -516,13 +458,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/maps/icon-complex.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="60" column="40" selection-start="2462" selection-end="2462" vertical-scroll-proportion="-17.875">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/maps/drop.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="12" column="66" selection-start="343" selection-end="343" vertical-scroll-proportion="-9.5">
@@ -537,23 +472,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/maps/weather-manager.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="824" column="2" selection-start="25629" selection-end="25629" vertical-scroll-proportion="-24.583334">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/maps/directions-simple.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="17" column="27" selection-start="661" selection-end="661" vertical-scroll-proportion="0.39534885">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/maps/MarkerManager/weather_map.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="35" selection-start="754" selection-end="754" vertical-scroll-proportion="-8.708333">
           <folding />
         </state>
       </provider>
@@ -565,9 +486,65 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/maps/MarkerManager/manyicons.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="56" selection-start="154" selection-end="154" vertical-scroll-proportion="-1.5833334">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/maps/manyicons.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="56" column="36" selection-start="2235" selection-end="2235" vertical-scroll-proportion="-3.5833333">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/maps/MarkerManager/directions-simple.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="115" column="0" selection-start="3839" selection-end="3839" vertical-scroll-proportion="1.744186">
+        <state line="44" column="10" selection-start="1611" selection-end="1677" vertical-scroll-proportion="-3.42">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/maps/MarkerManager/weather_map.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="35" selection-start="754" selection-end="754" vertical-scroll-proportion="-8.708333">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/maps/MarkerManager/images/icon-complex.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="37" selection-start="207" selection-end="207" vertical-scroll-proportion="0.1120283">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/maps/icon-complex.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="55" column="33" selection-start="2198" selection-end="2198" vertical-scroll-proportion="-43.541668">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/maps/MarkerManager/alongRoute.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="84" column="0" selection-start="3036" selection-end="3036" vertical-scroll-proportion="-16.625">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/maps/weather-manager.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="846" column="0" selection-start="26357" selection-end="26357" vertical-scroll-proportion="-6.18">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/maps/MarkerManager/icon-complex.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="9" selection-start="956" selection-end="956" vertical-scroll-proportion="0.6541916">
           <folding />
         </state>
       </provider>
