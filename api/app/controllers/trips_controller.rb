@@ -3,6 +3,7 @@ class TripsController < ApplicationController
   before_filter :find_trip, :except => [:index, :new, :create]
   # GET /trips
   # GET /trips.xml
+  # GET /trips.json
   def index
     @trips = Trip.all
 
@@ -14,6 +15,7 @@ class TripsController < ApplicationController
 
   # GET /trips/1
   # GET /trips/1.xml
+  # GET /trips/1.json
   def show
     @trip = Trip.find(params[:id])
 
@@ -40,9 +42,16 @@ class TripsController < ApplicationController
     end
   end
   
+  def steps
+    respond_to do |format|
+    format.json  { render :json => @trip.steps }
+    end
+  end
+  
   def directions
     respond_to do |format|
-      format.html 
+      format.html
+      format.json {render :json => @trip.steps.map {|s| s.instructions}} 
     end
   end
 
